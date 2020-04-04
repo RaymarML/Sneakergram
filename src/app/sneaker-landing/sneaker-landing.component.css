@@ -1,0 +1,11 @@
+.landing-sneakergram{
+  height: calc(100vh - 8vh);
+  background-image: url("../../assets/img/bg.png");
+  background-size: 105%;
+  background-repeat: no-repeat;
+  background-position: 0% -4%;
+}
+.landing-bg-overlay{
+  height: calc(100vh - 8vh);
+  background-color: rgba(0,0,0,0.85);
+}
