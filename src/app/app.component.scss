@@ -1,3 +1,5 @@
+@import "variables";
+
 .side-menu-bg {
   height: calc(100vh - 8vh);
   background-image: url("../assets/img/sidebar.jpg");
@@ -8,6 +10,6 @@
   display: none;
   top: 8vh;
   z-index: 9000;
-  overflow-x: hidden;
+  width: 75%;
 }
 
