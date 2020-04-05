@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $:any;
 
 @Component({
   selector: 'app-sneaker-side-menu',
@@ -10,6 +11,10 @@ export class SneakerSideMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openNav(){
+    $("app-sneaker-side-menu").toggle();
   }
 
 }
