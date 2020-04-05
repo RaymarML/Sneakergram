@@ -2,15 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { SneakerHeaderComponent } from './sneaker-header/sneaker-header.component';
-import { SneakerButtonComponent } from './sneaker-button/sneaker-button.component';
-import { SneakerRegistrationComponent } from './sneaker-registration/sneaker-registration.component';
-import { SneakerLoginComponent } from './sneaker-login/sneaker-login.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SneakerHeaderComponent } from './components/sneaker-header/sneaker-header.component';
+import { SneakerButtonComponent } from './components/sneaker-button/sneaker-button.component';
+import { SneakerRegistrationComponent } from './components/sneaker-registration/sneaker-registration.component';
+import { SneakerLoginComponent } from './components/sneaker-login/sneaker-login.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import {RouterModule} from '@angular/router';
-import {SneakerMainComponent} from './sneaker-main/sneaker-main.component';
-import { SneakerLandingComponent } from './sneaker-landing/sneaker-landing.component';
-import { SneakerSideMenuComponent } from './sneaker-side-menu/sneaker-side-menu.component';
+import {SneakerMainComponent} from './components/sneaker-main/sneaker-main.component';
+import { SneakerLandingComponent } from './components/sneaker-landing/sneaker-landing.component';
+import { SneakerSideMenuComponent } from './components/sneaker-side-menu/sneaker-side-menu.component';
+import {AppRouting} from "./app-routing/app-routing";
 
 @NgModule({
   declarations: [
@@ -26,13 +27,8 @@ import { SneakerSideMenuComponent } from './sneaker-side-menu/sneaker-side-menu.
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {path: '', component: SneakerLandingComponent, children: [
-          {path: '', component: SneakerMainComponent},
-          {path: 'Access/Login', component: SneakerLoginComponent },
-          {path: 'Access/Registration', component: SneakerRegistrationComponent },
-        ]}
-    ])
+    RouterModule,
+    AppRouting
   ],
   providers: [],
   bootstrap: [AppComponent]
