@@ -1,0 +1,15 @@
+@import "variables";
+
+.side-menu-bg {
+  height: calc(100vh - 8vh);
+  background-image: url("../assets/img/sidebar.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.5s ease-in-out;
+  display: none;
+  top: 8vh;
+  z-index: 9000;
+  width: 75%;
+}
+

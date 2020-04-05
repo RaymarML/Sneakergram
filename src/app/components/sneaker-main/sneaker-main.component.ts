@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-sneaker-main',
   templateUrl: './sneaker-main.component.html',
-  styleUrls: ['./sneaker-main.component.css']
+  styleUrls: ['./sneaker-main.component.scss']
 })
 export class SneakerMainComponent implements OnInit {
 
