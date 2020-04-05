@@ -4,8 +4,8 @@
 }
 
 a {
-  font-size: calc(2vw + 1em);
+  font-size: calc(2vw + 1.5em);
   color: white;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }

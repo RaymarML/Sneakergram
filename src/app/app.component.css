@@ -1,11 +1,11 @@
-.side-menu-bg{
+.side-menu-bg {
   height: calc(100vh - 8vh);
-  background-image: url("../assets/img/bg.png");
-  background-size: 105%;
+  background-image: url("../assets/img/sidebar.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: 0% -4%;
+  background-position: center;
   transition: 0.5s ease-in-out;
-  left: 100%;
+  display: none;
   top: 8vh;
   z-index: 9000;
   overflow-x: hidden;
