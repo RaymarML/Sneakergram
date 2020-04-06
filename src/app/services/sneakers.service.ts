@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Sneaker} from "../model/Sneaker";
-import {BehaviorSubject, Observable} from "rxjs";
-import {fromArray} from "rxjs/internal/observable/fromArray";
+import {BehaviorSubject, from, Observable} from "rxjs";
+import {filter, find, first, map} from "rxjs/operators";
+import {element} from "protractor";
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,9 @@ export class SneakersService {
     return this.sneakerObservable;
   }
 
+  getSneaker(param: number): Observable<Sneaker> {
+    return from(this.sneakerBehaviour.value).pipe(
+      first((element:Sneaker) => element._id == param )
+    )
+  }
 }

@@ -6,7 +6,7 @@ import {Sneaker} from "../../model/Sneaker";
 @Component({
   selector: 'app-sneaker-post',
   templateUrl: './sneaker-post.component.html',
-  styleUrls: ['./sneaker-post.component.css']
+  styleUrls: ['./sneaker-post.component.scss']
 })
 export class SneakerPostComponent implements OnInit {
 

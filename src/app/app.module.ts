@@ -16,6 +16,8 @@ import { SneakerContentPageComponent } from './components/sneaker-content-page/s
 import { SneakerBoxComponent } from './components/sneaker-box/sneaker-box.component';
 import { SneakerPostComponent } from './components/sneaker-post/sneaker-post.component';
 import { SneakerFavoritesComponent } from './components/sneaker-favorites/sneaker-favorites.component';
+import { SneakerComponent } from './components/sneaker/sneaker.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,14 @@ import { SneakerFavoritesComponent } from './components/sneaker-favorites/sneake
     SneakerContentPageComponent,
     SneakerBoxComponent,
     SneakerPostComponent,
-    SneakerFavoritesComponent
+    SneakerFavoritesComponent,
+    SneakerComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
-    AppRouting
+    AppRouting,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

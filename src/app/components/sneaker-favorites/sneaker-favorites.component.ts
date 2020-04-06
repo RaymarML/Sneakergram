@@ -6,7 +6,7 @@ import {SneakersService} from "../../services/sneakers.service";
 @Component({
   selector: 'app-sneaker-favorites',
   templateUrl: './sneaker-favorites.component.html',
-  styleUrls: ['./sneaker-favorites.component.css']
+  styleUrls: ['./sneaker-favorites.component.scss']
 })
 export class SneakerFavoritesComponent implements OnInit {
 
