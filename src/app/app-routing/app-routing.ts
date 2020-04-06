@@ -7,6 +7,8 @@ import {SneakerLoginComponent} from "../components/sneaker-login/sneaker-login.c
 import {SneakerRegistrationComponent} from "../components/sneaker-registration/sneaker-registration.component";
 import {UserProfileComponent} from "../components/user-profile/user-profile.component";
 import {SneakerPostComponent} from "../components/sneaker-post/sneaker-post.component";
+import {SneakerFavoritesComponent} from "../components/sneaker-favorites/sneaker-favorites.component";
+import {SneakerComponent} from "../components/sneaker/sneaker.component";
 
 const appRoutes: Routes = [
   { path: '', component: SneakerLandingComponent, children: [
@@ -15,7 +17,9 @@ const appRoutes: Routes = [
       {path: 'Access/Registration', component: SneakerRegistrationComponent },
       {path: 'Access/Account', component: UserProfileComponent }]
   },
-  { path: 'LatestPost', component: SneakerPostComponent}
+  { path: 'LatestPost', component: SneakerPostComponent},
+  { path: 'Favorites', component: SneakerFavoritesComponent},
+  { path: 'Sneaker/:id', component: SneakerComponent},
 ];
 
 @NgModule({

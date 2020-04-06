@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {SneakersService} from "../../services/sneakers.service";
 import {Observable} from "rxjs";
 import {Sneaker} from "../../model/Sneaker";
+import {SneakersService} from "../../services/sneakers.service";
 
 @Component({
-  selector: 'app-sneaker-post',
-  templateUrl: './sneaker-post.component.html',
-  styleUrls: ['./sneaker-post.component.scss']
+  selector: 'app-sneaker-favorites',
+  templateUrl: './sneaker-favorites.component.html',
+  styleUrls: ['./sneaker-favorites.component.scss']
 })
-export class SneakerPostComponent implements OnInit {
+export class SneakerFavoritesComponent implements OnInit {
 
-  title:string = "Últimos Posts";
+  title:string = "En Favoritos";
   sneakerObservable: Observable<Array<Sneaker>>;
 
   constructor(
