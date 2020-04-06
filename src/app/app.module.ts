@@ -12,8 +12,10 @@ import {SneakerMainComponent} from './components/sneaker-main/sneaker-main.compo
 import { SneakerLandingComponent } from './components/sneaker-landing/sneaker-landing.component';
 import { SneakerSideMenuComponent } from './components/sneaker-side-menu/sneaker-side-menu.component';
 import {AppRouting} from "./app-routing/app-routing";
-import { SneakerPostComponent } from './components/sneaker-post/sneaker-post.component';
+import { SneakerContentPageComponent } from './components/sneaker-content-page/sneaker-content-page.component';
 import { SneakerBoxComponent } from './components/sneaker-box/sneaker-box.component';
+import { SneakerPostComponent } from './components/sneaker-post/sneaker-post.component';
+import { SneakerFavoritesComponent } from './components/sneaker-favorites/sneaker-favorites.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { SneakerBoxComponent } from './components/sneaker-box/sneaker-box.compon
     SneakerMainComponent,
     SneakerLandingComponent,
     SneakerSideMenuComponent,
+    SneakerContentPageComponent,
+    SneakerBoxComponent,
     SneakerPostComponent,
-    SneakerBoxComponent
+    SneakerFavoritesComponent
   ],
   imports: [
     BrowserModule,
