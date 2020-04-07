@@ -3,6 +3,7 @@
 .loading-wrapper {
   height: 92vh;
   background-color: $loading-color;
+  font-size: 1.5em;
 
   .loader {
     animation: spin 2s linear infinite;

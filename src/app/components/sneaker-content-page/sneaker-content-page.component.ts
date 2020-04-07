@@ -12,19 +12,11 @@ export class SneakerContentPageComponent implements OnInit {
 
   @Input() sneakerObservable: Observable<SneakerInterface[]>;
   @Input() title:string;
-  sneakers: SneakerInterface[];
 
   constructor(
   ) { }
 
   ngOnInit(): void {
-    this.sneakerObservable.subscribe(
-      response => {
-        this.sneakers = response;
-      },
-      error => {
-        this.sneakers = [];
-      })
   }
 
 }
