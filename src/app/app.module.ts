@@ -19,6 +19,9 @@ import { SneakerFavoritesComponent } from './components/sneaker-favorites/sneake
 import { SneakerComponent } from './components/sneaker/sneaker.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +43,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     BrowserModule,
     RouterModule,
     AppRouting,
-    SlickCarouselModule
+    SlickCarouselModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
