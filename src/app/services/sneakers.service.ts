@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Sneaker} from "../model/Sneaker";
-import {BehaviorSubject, from, Observable} from "rxjs";
-import {filter, find, first, map} from "rxjs/operators";
-import {element} from "protractor";
+import {BehaviorSubject, Observable} from "rxjs";
+import {map} from "rxjs/operators";
 import {SneakerInterface} from "../model/SneakerInterface";
-import {AngularFireStorage} from "@angular/fire/storage";
 import {AngularFirestore} from "@angular/fire/firestore";
 
 @Injectable({
@@ -72,13 +70,13 @@ export class SneakersService {
     )
   }
 
-  getSneakers(): Observable<Array<Sneaker>> {
-    return this.sneakerObservable;
-  }
-
-  getSneaker(param: number): Observable<Sneaker> {
-    return from(this.sneakerBehaviour.value).pipe(
-      first((element:Sneaker) => element._id == param )
-    )
+  getSneaker(id:number): Observable<any> {
+    return this.angularFirestore.doc<SneakerInterface>("sneaker/" + id).snapshotChanges().pipe(
+      map(sneaker => {
+        const content = sneaker.payload.data() as SneakerInterface;
+        const id = sneaker.payload.id;
+        return {id, ...content};
+      })
+    );
   }
 }

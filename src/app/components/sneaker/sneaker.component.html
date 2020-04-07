@@ -1,11 +1,10 @@
-<div class="container mt-4" *ngIf="sneaker">
-
+<div class="container mt-4" *ngIf="sneaker; else loading">
 
   <ngx-slick-carousel class="carousel"
                       #slickModal="slick-carousel"
                       [config]="slideConfig">
-    <div ngxSlickItem *ngFor="let image of images" class="slide">
-      <img src="{{ image}}" alt="" class="w-100">
+    <div ngxSlickItem *ngFor="let image of sneaker.imageUrl" class="slide">
+      <img src="{{ image }}" alt="" class="w-100">
     </div>
   </ngx-slick-carousel>
 
@@ -30,5 +29,8 @@
     <button class="col-7 mr-2">Adquirir</button>
     <button class="col-3"><i class="fas fa-heart"></i></button>
   </div>
-
 </div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

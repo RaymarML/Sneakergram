@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { SneakersService } from "../../services/sneakers.service";
-import {Sneaker} from "../../model/Sneaker";
+import {SneakerInterface} from "../../model/SneakerInterface";
 
 @Component({
   selector: 'app-sneaker',
@@ -10,8 +10,7 @@ import {Sneaker} from "../../model/Sneaker";
 })
 export class SneakerComponent implements OnInit {
 
-  sneaker: Sneaker;
-  images:Array<string>;
+  sneaker: SneakerInterface;
   slideConfig = {
     "slidesToShow": 1,
     "slidesToScroll": 1,
@@ -32,11 +31,12 @@ export class SneakerComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.sneakersService.getSneaker(params['id']).subscribe(
-        data => {
-          this.sneaker = data;
-          this.images = [data.image, data.image, data.image];
+        value => {
+          this.sneaker = value;
         },
-        error => this.router.navigate([''])
+        error => {
+          this.router.navigate([''])
+        }
       );
     })
   }
