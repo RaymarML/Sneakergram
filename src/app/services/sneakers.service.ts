@@ -3,6 +3,9 @@ import {Sneaker} from "../model/Sneaker";
 import {BehaviorSubject, from, Observable} from "rxjs";
 import {filter, find, first, map} from "rxjs/operators";
 import {element} from "protractor";
+import {SneakerInterface} from "../model/SneakerInterface";
+import {AngularFireStorage} from "@angular/fire/storage";
+import {AngularFirestore} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +16,13 @@ export class SneakersService {
   sneakerBehaviour : BehaviorSubject<Array<Sneaker>> = new BehaviorSubject<Array<Sneaker>>(this.sneakers);
   sneakerObservable: Observable<Array<Sneaker>> = this.sneakerBehaviour.asObservable();
 
-  constructor() {
+  constructor(
+    private angularFirestore: AngularFirestore
+  ) {
 
     this.sneakers = [
-      new Sneaker(1, "Air Jordan 1 - Bred Toe", "https://sneakernews.com/wp-content/uploads/2019/08/jordan-1-satin-black-toe-store-list-0.jpg", "", ""),
+      new Sneaker(1, "Air Jordan 1 - Bred Toe",
+        "", "", ""),
       new Sneaker(2, "Air Jordan 1 - Travis Scott", "https://preview.redd.it/okznlvtdtxq41.jpg?width=640&crop=smart&auto=webp&s=cd84dc7ee313fbf04422982d137a3cc586a488a1", "", ""),
       new Sneaker(3, "Nike Off White", "https://preview.redd.it/klui0g36gwq41.jpg?width=640&crop=smart&auto=webp&s=aee6d5953124ba7cbe1894485e92cd3cc65aafdb", "", ""),
       new Sneaker(4, "Air Max 90 - Off White", "https://preview.redd.it/59pdvsyu5wq41.jpg?width=640&crop=smart&auto=webp&s=8759182ea92fe448fad9ebd7e6e8c1cdbca4072f", "", ""),
@@ -28,6 +34,42 @@ export class SneakersService {
 
     this.sneakerBehaviour.next(this.sneakers);
 
+  }
+
+  getAllSneakers(): Observable<SneakerInterface[]> {
+    return this.angularFirestore.collection('sneaker').snapshotChanges().pipe(
+      map(sneakers => {
+        return sneakers.map(sneaker => {
+          const content = sneaker.payload.doc.data() as SneakerInterface;
+          const id = sneaker.payload.doc.id;
+          return {id, ...content};
+        });
+      })
+    )
+  }
+
+  getLastPosts(): Observable<SneakerInterface[]> {
+    return this.angularFirestore.collection('sneaker').snapshotChanges().pipe(
+      map(sneakers => {
+        return sneakers.map(sneaker => {
+          const content = sneaker.payload.doc.data() as SneakerInterface;
+          const id = sneaker.payload.doc.id;
+          return {id, ...content};
+        });
+      })
+    )
+  }
+
+  getFavorites(): Observable<SneakerInterface[]> {
+    return this.angularFirestore.collection('sneaker').snapshotChanges().pipe(
+      map(sneakers => {
+        return sneakers.map(sneaker => {
+          const content = sneaker.payload.doc.data() as SneakerInterface;
+          const id = sneaker.payload.doc.id;
+          return {id, ...content};
+        });
+      })
+    )
   }
 
   getSneakers(): Observable<Array<Sneaker>> {

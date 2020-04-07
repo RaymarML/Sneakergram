@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Sneaker} from "../../model/Sneaker";
+import {SneakerInterface} from "../../model/SneakerInterface";
 
 @Component({
   selector: 'app-sneaker-box',
@@ -9,11 +9,9 @@ import {Sneaker} from "../../model/Sneaker";
 })
 export class SneakerBoxComponent implements OnInit {
 
-  @Input() sneaker: Sneaker;
+  @Input() sneaker: SneakerInterface;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

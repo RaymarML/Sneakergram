@@ -20,7 +20,10 @@ import { SneakerComponent } from './components/sneaker/sneaker.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { AngularFireModule } from '@angular/fire';
+import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {AngularFireStorageModule, BUCKET} from "@angular/fire/storage";
 import { environment } from '../environments/environment';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -37,16 +40,23 @@ import { environment } from '../environments/environment';
     SneakerBoxComponent,
     SneakerPostComponent,
     SneakerFavoritesComponent,
-    SneakerComponent
+    SneakerComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRouting,
     SlickCarouselModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: BUCKET, useValue: 'gs://sneakergram-f7a1e.appspot.com/'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

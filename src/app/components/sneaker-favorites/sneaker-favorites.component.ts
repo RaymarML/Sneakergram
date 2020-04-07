@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {Sneaker} from "../../model/Sneaker";
 import {SneakersService} from "../../services/sneakers.service";
+import {SneakerInterface} from "../../model/SneakerInterface";
 
 @Component({
   selector: 'app-sneaker-favorites',
@@ -11,16 +12,16 @@ import {SneakersService} from "../../services/sneakers.service";
 export class SneakerFavoritesComponent implements OnInit {
 
   title:string = "En Favoritos";
-  sneakerObservable: Observable<Array<Sneaker>>;
+  sneakerObservable: Observable<SneakerInterface[]>;
 
   constructor(
     private sneakersService: SneakersService
   ) {
-    this.sneakerObservable = this.sneakersService.getSneakers();
+
   }
 
   ngOnInit(): void {
-
+    this.sneakerObservable = this.sneakersService.getFavorites();
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SneakersService} from "../../services/sneakers.service";
 import {Observable} from "rxjs";
-import {Sneaker} from "../../model/Sneaker";
+import {SneakerInterface} from "../../model/SneakerInterface";
 
 @Component({
   selector: 'app-sneaker-post',
@@ -10,17 +10,16 @@ import {Sneaker} from "../../model/Sneaker";
 })
 export class SneakerPostComponent implements OnInit {
 
-  title:string = "Últimos Posts";
-  sneakerObservable: Observable<Array<Sneaker>>;
+  title: string = "Últimos Posts";
+  sneakerObservable: Observable<SneakerInterface[]>;
 
   constructor(
     private sneakersService: SneakersService
   ) {
-    this.sneakerObservable = this.sneakersService.getSneakers();
   }
 
   ngOnInit(): void {
-
+    this.sneakerObservable = this.sneakersService.getLastPosts();
   }
 
 }

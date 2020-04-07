@@ -14,8 +14,8 @@ export class AuthorizationService {
 
     this.angularFireAuth.authState.subscribe(
       value => {
-        console.log(value.providerData[0]);
-        console.log(value);
+        //console.log(value.providerData[0]);
+        //console.log(value);
       },
 
       error => console.log(error),
@@ -30,7 +30,7 @@ export class AuthorizationService {
     let provider = new auth.GoogleAuthProvider();
 
     fromPromise(this.angularFireAuth.signInWithRedirect(provider)).subscribe(
-      value => console.log(value),
+      value => //console.log(value),
         reason => console.log(reason)
     );
   }
@@ -38,7 +38,7 @@ export class AuthorizationService {
   sigInWithEmailAndPassword(email: string, password: string) {
     fromPromise(this.angularFireAuth.signInWithEmailAndPassword("prueba@gmail.com", "prueba")).subscribe(
       value => {
-        console.log(value);
+        //console.log(value);
       }, error => {
         console.log(error);
       }

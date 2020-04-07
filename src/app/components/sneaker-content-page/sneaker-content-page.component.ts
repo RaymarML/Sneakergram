@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Sneaker} from "../../model/Sneaker";
 import {Observable} from "rxjs";
+import {SneakerInterface} from "../../model/SneakerInterface";
 
 @Component({
   selector: 'app-sneaker-page-content',
@@ -9,9 +10,9 @@ import {Observable} from "rxjs";
 })
 export class SneakerContentPageComponent implements OnInit {
 
-  @Input() sneakerObservable: Observable<Array<Sneaker>>;
+  @Input() sneakerObservable: Observable<SneakerInterface[]>;
   @Input() title:string;
-  sneakers: Array<Sneaker>;
+  sneakers: SneakerInterface[];
 
   constructor(
   ) { }
