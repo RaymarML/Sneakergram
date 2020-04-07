@@ -21,7 +21,6 @@ export class SneakerSideMenuComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(
       value => {
         this.userLog = value != null;
-        console.log(this.userLog);
       },
       error => {
         this.userLog = false;

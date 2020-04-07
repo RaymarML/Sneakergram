@@ -3,7 +3,7 @@ import {AngularFireAuth} from "@angular/fire/auth";
 import {fromPromise} from "rxjs/internal-compatibility";
 import {UserInterface} from "../model/UserInterface";
 import {Observable} from "rxjs";
-import { User } from "firebase";
+import { User, auth } from "firebase";
 
 
 @Injectable({
@@ -25,12 +25,11 @@ export class AuthorizationService {
   }
 
   sigInWithGoogle(){
-    //TODO
+   const provider = new auth.GoogleAuthProvider();
+   return fromPromise(this.angularFireAuth.signInWithRedirect(provider));
   }
 
   signOut(){
     this.angularFireAuth.signOut();
   }
-
-
 }

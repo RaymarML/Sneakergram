@@ -9,21 +9,10 @@ import {AuthorizationService} from "./services/authorization.service";
 export class AppComponent {
 
   title = 'Sneakergram';
-  userLogged: boolean;
 
   constructor(
     private authenticationService: AuthorizationService
   ) {
-    this.authenticationService.currentUser.subscribe(
-      value => {
-        console.log(value)
-      },
-      error => {
-        console.log(error)
-      }
-    );
-
-
   }
 
 

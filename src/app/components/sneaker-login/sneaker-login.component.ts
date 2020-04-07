@@ -23,10 +23,21 @@ export class SneakerLoginComponent implements OnInit {
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("", [Validators.required]),
     });
+
+    this.authorizationService.currentUser.subscribe(value => {
+      if(value != null) this.router.navigate(['LatestPost'])
+    })
   }
 
   ngOnInit(): void {
 
+  }
+
+  loginGoogle(){
+    this.authorizationService.sigInWithGoogle().subscribe(
+      value => this.router.navigate(['LatestPost']),
+      error => this.showError = true
+    );
   }
 
   onSubmit(form: UserInterface){
