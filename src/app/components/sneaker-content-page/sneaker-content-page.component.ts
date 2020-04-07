@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Sneaker} from "../../model/Sneaker";
 import {Observable} from "rxjs";
 import {SneakerInterface} from "../../model/SneakerInterface";
 

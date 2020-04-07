@@ -7,23 +7,26 @@ import {AuthorizationService} from "./services/authorization.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'Sneakergram';
+  userLogged: boolean;
 
   constructor(
     private authenticationService: AuthorizationService
   ) {
+    this.authenticationService.currentUser.subscribe(
+      value => {
+        console.log(value)
+      },
+      error => {
+        console.log(error)
+      }
+    );
+
 
   }
 
-  click(){
-    this.authenticationService.click();
-  }
 
-  click2() {
-    this.authenticationService.signOut();
-  }
 
-  click3() {
-    this.authenticationService.sigInWithEmailAndPassword("prueba@gmail.com", "prueba");
-  }
+
 }

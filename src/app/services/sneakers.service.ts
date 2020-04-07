@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Sneaker} from "../model/Sneaker";
-import {BehaviorSubject, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {SneakerInterface} from "../model/SneakerInterface";
 import {AngularFirestore} from "@angular/fire/firestore";
@@ -9,8 +8,6 @@ import {AngularFirestore} from "@angular/fire/firestore";
   providedIn: 'root'
 })
 export class SneakersService {
-
-  sneakers: Array<Sneaker>;
 
   constructor(
     private angularFirestore: AngularFirestore

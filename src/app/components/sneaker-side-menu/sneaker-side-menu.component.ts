@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthorizationService} from "../../services/authorization.service";
 declare var $:any;
 
 @Component({
@@ -8,13 +9,31 @@ declare var $:any;
 })
 export class SneakerSideMenuComponent implements OnInit {
 
-  constructor() { }
+  userLog: boolean = false;
+
+  constructor(
+    private authenticationService: AuthorizationService
+  ) {
+
+  }
 
   ngOnInit(): void {
+    this.authenticationService.currentUser.subscribe(
+      value => {
+        this.userLog = value != null;
+        console.log(this.userLog);
+      },
+      error => {
+        this.userLog = false;
+      }
+    )
   }
 
   openNav(){
     $("app-sneaker-side-menu").toggle();
   }
 
+  logout() {
+    this.authenticationService.signOut();
+  }
 }

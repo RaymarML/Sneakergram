@@ -13,6 +13,7 @@
   text-transform: uppercase;
 }
 
+
 p, h1, h2, label{
   margin: 0 !important;
   line-height: 17px;
@@ -33,6 +34,11 @@ button, button:active, button:focus, button:visited{
   border: none;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   outline: none !important;
+
+}
+
+.disabled {
+  background-color: darken($sneaker-button, 20);
 }
 
 .sneaker-bg-color{
@@ -60,6 +66,3 @@ button, button:active, button:focus, button:visited{
 .pointer{
   cursor: pointer;
 }
-
-
-

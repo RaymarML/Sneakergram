@@ -25,6 +25,10 @@ import {AngularFireStorageModule, BUCKET} from "@angular/fire/storage";
 import { environment } from '../environments/environment';
 import { LoadingComponent } from './components/loading/loading.component';
 
+import { ReactiveFormsModule } from "@angular/forms";
+import { ErrorComponent } from './components/error/error.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +45,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     SneakerPostComponent,
     SneakerFavoritesComponent,
     SneakerComponent,
-    LoadingComponent
+    LoadingComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     SlickCarouselModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

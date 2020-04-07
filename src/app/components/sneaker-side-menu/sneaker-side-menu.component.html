@@ -1,8 +1,9 @@
 <div class="sidebar d-flex flex-column text-center pt-3" (click)="openNav()">
   <a routerLink="">Inicio</a>
   <a routerLink="/LatestPost">Últimos Posts</a>
-  <a routerLink="/Access/Login">Login</a>
-  <a routerLink="/Access/Registration">Registrarse</a>
-  <a routerLink="/Favorites">Favoritos</a>
-  <a routerLink="/Access/Account">Mi Cuenta</a>
+  <a *ngIf="!userLog" routerLink="/Access/Login" >Login</a>
+  <a *ngIf="!userLog" routerLink="/Access/Registration">Registrarse</a>
+  <a *ngIf="userLog" routerLink="/Favorites">Favoritos</a>
+  <a *ngIf="userLog" routerLink="/Access/Account">Mi Cuenta</a>
+  <a *ngIf="userLog" routerLink="" (click)="logout()">Cerrar Sesión</a>
 </div>

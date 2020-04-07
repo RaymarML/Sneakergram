@@ -1,54 +1,36 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/auth";
-import {auth} from "firebase";
 import {fromPromise} from "rxjs/internal-compatibility";
+import {UserInterface} from "../model/UserInterface";
+import {Observable} from "rxjs";
+import { User } from "firebase";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
 
+  currentUser: Observable<User>;
+
   constructor(
     private angularFireAuth: AngularFireAuth,
   ) {
-
-    this.angularFireAuth.authState.subscribe(
-      value => {
-        //console.log(value.providerData[0]);
-        //console.log(value);
-      },
-
-      error => console.log(error),
-    );
-
-    //this.angularFireAuth.signInWithEmailAndPassword("prueba@gmail.com", "prueba");
-    //this.angularFireAuth.signOut();
-
+    this.currentUser = this.angularFireAuth.authState;
   }
 
-  click(){
-    let provider = new auth.GoogleAuthProvider();
-
-    fromPromise(this.angularFireAuth.signInWithRedirect(provider)).subscribe(
-      value => //console.log(value),
-        reason => console.log(reason)
-    );
+  sigInWithEmailAndPassword(user: UserInterface) {
+    const {email, password} = user;
+    return fromPromise(this.angularFireAuth.signInWithEmailAndPassword(email, password));
   }
 
-  sigInWithEmailAndPassword(email: string, password: string) {
-    fromPromise(this.angularFireAuth.signInWithEmailAndPassword("prueba@gmail.com", "prueba")).subscribe(
-      value => {
-        //console.log(value);
-      }, error => {
-        console.log(error);
-      }
-    );
+  sigInWithGoogle(){
+    //TODO
   }
 
   signOut(){
-    fromPromise(this.angularFireAuth.signOut()).subscribe(
-      value => console.log(value),
-      error => console.log(error)
-    );
+    this.angularFireAuth.signOut();
   }
+
+
 }
