@@ -1,3 +1,5 @@
+@import "src/app/variables";
+
 .page-presentation-bg{
   height: 15vh;
   background-image: url("../../../assets/img/page-presentation-bg.png");
@@ -8,7 +10,7 @@
 }
 
 .title-bg{
-  background-color: #F4E9E9;
+  background-color: $presentation-color;
 }
 
 .h1-sneaker-style{

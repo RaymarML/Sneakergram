@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-sneaker-page-content',
@@ -8,14 +7,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class SneakerContentPageComponent implements OnInit {
 
-  header:string;
   constructor(
-    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      this.header = params['header'];
-    })
   }
 }

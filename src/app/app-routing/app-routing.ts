@@ -9,6 +9,8 @@ import {UserProfileComponent} from "../components/user-profile/user-profile.comp
 import {SneakerFavoritesComponent} from "../components/sneaker-favorites/sneaker-favorites.component";
 import {SneakerComponent} from "../components/sneaker/sneaker.component";
 import {SneakerContentPageComponent} from "../components/sneaker-content-page/sneaker-content-page.component";
+import {SneakerPopularComponent} from "../components/sneaker-popular/sneaker-popular.component";
+import {SneakerPostComponent} from "../components/sneaker-post/sneaker-post.component";
 
 const appRoutes: Routes = [
   { path: '', component: SneakerLandingComponent, children: [
@@ -17,7 +19,11 @@ const appRoutes: Routes = [
       {path: 'Access/Registration', component: SneakerRegistrationComponent },
       {path: 'Access/Account', component: UserProfileComponent }]
   },
-  { path: 'Content/:header', component: SneakerContentPageComponent},
+  { path: 'Content', component: SneakerContentPageComponent, children: [
+      {path: 'Más-Popular', component: SneakerPopularComponent},
+      {path: 'Últimos-Posts', component: SneakerPostComponent},
+      {path: 'Favoritos', component: SneakerFavoritesComponent},
+    ]},
   { path: 'Favorites', component: SneakerFavoritesComponent},
   { path: 'Sneaker/:id', component: SneakerComponent},
 ];

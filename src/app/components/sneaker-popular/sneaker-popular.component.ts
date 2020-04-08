@@ -10,9 +10,8 @@ import {SneakerInterface} from "../../model/SneakerInterface";
 })
 export class SneakerPopularComponent implements OnInit {
 
-
-  sneakers: Array<SneakerInterface>;
   sneakerObservable: Observable<SneakerInterface[]>;
+  title: string = "Más Populares";
 
   constructor(
     private sneakersService: SneakersService
@@ -21,13 +20,6 @@ export class SneakerPopularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sneakerObservable.subscribe(
-      response => {
-        this.sneakers = response;
-      },
-      error => {
-        this.sneakers = [];
-      })
   }
 
 }
