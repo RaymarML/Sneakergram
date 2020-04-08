@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {SneakerInterface} from "../../model/SneakerInterface";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-sneaker-page-content',
@@ -9,13 +8,14 @@ import {SneakerInterface} from "../../model/SneakerInterface";
 })
 export class SneakerContentPageComponent implements OnInit {
 
-  @Input() sneakerObservable: Observable<SneakerInterface[]>;
-  @Input() title:string;
-
+  header:string;
   constructor(
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this.header = params['header'];
+    })
   }
-
 }

@@ -1,11 +1,10 @@
-<div class="container pt-3" *ngIf="sneakerObservable | async as sneakers; else loading ">
-  <h1 class="title-page">{{title}}</h1>
-  <div class="row justify-content-start align-items-center my-3">
-    <app-sneaker-box *ngFor="let sneaker of sneakers" [sneaker]="sneaker"></app-sneaker-box>
+<div class="container pt-3">
+  <app-sneaker-page-presentation
+    [title]="header"
+  ></app-sneaker-page-presentation>
+  <div [ngSwitch]="header" class="w-100 my-4">
+    <app-sneaker-popular *ngSwitchCase="'Más Popular'"></app-sneaker-popular>
+    <app-sneaker-post *ngSwitchCase="'Últimos Post'"></app-sneaker-post>
   </div>
 </div>
-
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>
 

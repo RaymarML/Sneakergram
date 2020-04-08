@@ -27,6 +27,9 @@ import { LoadingComponent } from './components/loading/loading.component';
 
 import { ReactiveFormsModule } from "@angular/forms";
 import { ErrorComponent } from './components/error/error.component';
+import { SneakerPagePresentationComponent } from './components/sneaker-page-presentation/sneaker-page-presentation.component';
+import { SneakerPopularItemComponent } from './components/sneaker-popular-item/sneaker-popular-item.component';
+import { SneakerPopularComponent } from './components/sneaker-popular/sneaker-popular.component';
 
 
 @NgModule({
@@ -46,7 +49,10 @@ import { ErrorComponent } from './components/error/error.component';
     SneakerFavoritesComponent,
     SneakerComponent,
     LoadingComponent,
-    ErrorComponent
+    ErrorComponent,
+    SneakerPagePresentationComponent,
+    SneakerPopularItemComponent,
+    SneakerPopularComponent
   ],
   imports: [
     BrowserModule,

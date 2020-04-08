@@ -1,15 +1,14 @@
 @import "variables";
 
-.side-menu-bg {
-  height: calc(100vh - 8vh);
-  background-image: url("../assets/img/sidebar.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: 0.5s ease-in-out;
-  display: none;
+app-sneaker-side-menu{
   top: 8vh;
+  left: 100%;
+  width: 100vw;
+  height: calc(100vh - 8vh);
+  transition: all 0.5s ease-in-out;
   z-index: 9000;
-  width: 75%;
 }
 
+.open-side-nav{
+  left: 0 !important;
+}

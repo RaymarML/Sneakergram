@@ -14,6 +14,6 @@ export class SneakerHeaderComponent implements OnInit {
   }
 
   openNav(){
-    $("app-sneaker-side-menu").toggle();
+    $("app-sneaker-side-menu").toggleClass("open-side-nav");
   }
 }

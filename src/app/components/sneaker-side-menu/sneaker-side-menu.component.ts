@@ -10,6 +10,8 @@ declare var $:any;
 export class SneakerSideMenuComponent implements OnInit {
 
   userLog: boolean = false;
+  popularHeader:string = "Más Popular";
+  postHeader:string = "Últimos Post";
 
   constructor(
     private authenticationService: AuthorizationService
@@ -29,7 +31,7 @@ export class SneakerSideMenuComponent implements OnInit {
   }
 
   openNav(){
-    $("app-sneaker-side-menu").toggle();
+    $("app-sneaker-side-menu").toggleClass("open-side-nav");
   }
 
   logout() {

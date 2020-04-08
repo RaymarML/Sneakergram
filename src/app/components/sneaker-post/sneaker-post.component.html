@@ -1,4 +1,9 @@
-<app-sneaker-page-content
-  [title]="title"
-  [sneakerObservable]="sneakerObservable"
-></app-sneaker-page-content>
+<div class="row justify-content-start" *ngIf="sneakerObservable | async as sneakers; else loading">
+  <app-sneaker-box
+    *ngFor="let sneaker of sneakers" [sneaker]="sneaker">
+  </app-sneaker-box>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
