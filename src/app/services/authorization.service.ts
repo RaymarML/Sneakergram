@@ -17,6 +17,9 @@ export class AuthorizationService {
     private angularFireAuth: AngularFireAuth,
   ) {
     this.currentUser = this.angularFireAuth.authState;
+
+
+
   }
 
   sigInWithEmailAndPassword(user: UserInterface) {
