@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SneakerHeaderComponent } from './components/sneaker-header/sneaker-header.component';
 import { SneakerButtonComponent } from './components/sneaker-button/sneaker-button.component';
-import { SneakerRegistrationComponent } from './components/sneaker-registration/sneaker-registration.component';
 import { SneakerLoginComponent } from './components/sneaker-login/sneaker-login.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import {RouterModule} from '@angular/router';
@@ -25,11 +24,12 @@ import {AngularFireStorageModule, BUCKET} from "@angular/fire/storage";
 import { environment } from '../environments/environment';
 import { LoadingComponent } from './components/loading/loading.component';
 
-import { ReactiveFormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ErrorComponent } from './components/error/error.component';
 import { SneakerPagePresentationComponent } from './components/sneaker-page-presentation/sneaker-page-presentation.component';
 import { SneakerPopularItemComponent } from './components/sneaker-popular-item/sneaker-popular-item.component';
 import { SneakerPopularComponent } from './components/sneaker-popular/sneaker-popular.component';
+import { SneakerRegisterComponent } from './components/sneaker-register/sneaker-register.component';
 
 
 @NgModule({
@@ -37,7 +37,6 @@ import { SneakerPopularComponent } from './components/sneaker-popular/sneaker-po
     AppComponent,
     SneakerHeaderComponent,
     SneakerButtonComponent,
-    SneakerRegistrationComponent,
     SneakerLoginComponent,
     UserProfileComponent,
     SneakerMainComponent,
@@ -52,7 +51,8 @@ import { SneakerPopularComponent } from './components/sneaker-popular/sneaker-po
     ErrorComponent,
     SneakerPagePresentationComponent,
     SneakerPopularItemComponent,
-    SneakerPopularComponent
+    SneakerPopularComponent,
+    SneakerRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +62,8 @@ import { SneakerPopularComponent } from './components/sneaker-popular/sneaker-po
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     {

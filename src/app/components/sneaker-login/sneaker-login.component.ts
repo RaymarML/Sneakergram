@@ -25,7 +25,7 @@ export class SneakerLoginComponent implements OnInit {
     });
 
     this.authorizationService.currentUser.subscribe(value => {
-      if(value != null) this.router.navigate(['LatestPost'])
+      if(value != null) this.router.navigate(['/Content/LatestPosts'])
     })
   }
 
@@ -35,7 +35,7 @@ export class SneakerLoginComponent implements OnInit {
 
   loginGoogle(){
     this.authorizationService.sigInWithGoogle().subscribe(
-      value => this.router.navigate(['LatestPost']),
+      value => this.router.navigate(['/Content/LatestPosts']),
       error => this.showError = true
     );
   }
@@ -43,7 +43,7 @@ export class SneakerLoginComponent implements OnInit {
   onSubmit(form: UserInterface){
     this.authorizationService.sigInWithEmailAndPassword(form).subscribe(
       value => {
-        this.router.navigate(['LatestPost']);
+        this.router.navigate(['/Content/LatestPosts']);
       },error => {
         this.showError = true;
       }
