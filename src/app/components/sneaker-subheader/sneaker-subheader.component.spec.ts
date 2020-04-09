@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SneakerButtonComponent } from './sneaker-button.component';
+import { SneakerSubheaderComponent } from './sneaker-subheader.component';
 
-describe('SneakerButtonComponent', () => {
-  let component: SneakerButtonComponent;
-  let fixture: ComponentFixture<SneakerButtonComponent>;
+describe('SneakerSubheaderComponent', () => {
+  let component: SneakerSubheaderComponent;
+  let fixture: ComponentFixture<SneakerSubheaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SneakerButtonComponent ]
+      declarations: [ SneakerSubheaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SneakerButtonComponent);
+    fixture = TestBed.createComponent(SneakerSubheaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

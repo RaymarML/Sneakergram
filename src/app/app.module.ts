@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SneakerHeaderComponent } from './components/sneaker-header/sneaker-header.component';
-import { SneakerButtonComponent } from './components/sneaker-button/sneaker-button.component';
 import { SneakerLoginComponent } from './components/sneaker-login/sneaker-login.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import {RouterModule} from '@angular/router';
@@ -31,13 +30,18 @@ import { SneakerPopularItemComponent } from './components/sneaker-popular-item/s
 import { SneakerPopularComponent } from './components/sneaker-popular/sneaker-popular.component';
 import { SneakerRegisterComponent } from './components/sneaker-register/sneaker-register.component';
 import { SneakerSearchComponent } from './components/sneaker-search/sneaker-search.component';
+import { SneakerAddButtonComponent } from './components/sneaker-add-button/sneaker-add-button.component';
+import { SneakerCreateCollectionComponent } from './components/sneaker-create-collection/sneaker-create-collection.component';
+import { SneakerCreatePostComponent } from './components/sneaker-create-post/sneaker-create-post.component';
+import { SneakerMyCollectionsComponent } from './components/sneaker-my-collections/sneaker-my-collections.component';
+import { SneakerMyPostsComponent } from './components/sneaker-my-posts/sneaker-my-posts.component';
+import { SneakerSubheaderComponent } from './components/sneaker-subheader/sneaker-subheader.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SneakerHeaderComponent,
-    SneakerButtonComponent,
     SneakerLoginComponent,
     UserProfileComponent,
     SneakerMainComponent,
@@ -54,7 +58,13 @@ import { SneakerSearchComponent } from './components/sneaker-search/sneaker-sear
     SneakerPopularItemComponent,
     SneakerPopularComponent,
     SneakerRegisterComponent,
-    SneakerSearchComponent
+    SneakerSearchComponent,
+    SneakerAddButtonComponent,
+    SneakerCreateCollectionComponent,
+    SneakerCreatePostComponent,
+    SneakerMyCollectionsComponent,
+    SneakerMyPostsComponent,
+    SneakerSubheaderComponent,
   ],
   imports: [
     BrowserModule,

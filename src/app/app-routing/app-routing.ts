@@ -12,6 +12,10 @@ import {SneakerPopularComponent} from "../components/sneaker-popular/sneaker-pop
 import {SneakerPostComponent} from "../components/sneaker-post/sneaker-post.component";
 import {SneakerRegisterComponent} from "../components/sneaker-register/sneaker-register.component";
 import {SneakerSearchComponent} from "../components/sneaker-search/sneaker-search.component";
+import {SneakerMyPostsComponent} from "../components/sneaker-my-posts/sneaker-my-posts.component";
+import {SneakerMyCollectionsComponent} from "../components/sneaker-my-collections/sneaker-my-collections.component";
+import {SneakerCreatePostComponent} from "../components/sneaker-create-post/sneaker-create-post.component";
+import {SneakerCreateCollectionComponent} from "../components/sneaker-create-collection/sneaker-create-collection.component";
 
 const appRoutes: Routes = [
   { path: '', component: SneakerLandingComponent, children: [
@@ -25,7 +29,11 @@ const appRoutes: Routes = [
       {path: 'LatestPosts', component: SneakerPostComponent},
       {path: 'Favoritos', component: SneakerFavoritesComponent},
       {path: 'Search', component: SneakerSearchComponent},
+      {path: 'My-Posts', component: SneakerMyPostsComponent},
+      {path: 'My-Collections', component: SneakerMyCollectionsComponent},
     ]},
+  {path: 'Content/My-Posts/Create-Post', component: SneakerCreatePostComponent},
+  {path: 'Content/My-Collections/Create-Collection', component: SneakerCreateCollectionComponent},
   { path: 'Sneaker/:id', component: SneakerComponent},
 ];
 
