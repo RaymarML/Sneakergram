@@ -11,6 +11,7 @@ import {SneakerContentPageComponent} from "../components/sneaker-content-page/sn
 import {SneakerPopularComponent} from "../components/sneaker-popular/sneaker-popular.component";
 import {SneakerPostComponent} from "../components/sneaker-post/sneaker-post.component";
 import {SneakerRegisterComponent} from "../components/sneaker-register/sneaker-register.component";
+import {SneakerSearchComponent} from "../components/sneaker-search/sneaker-search.component";
 
 const appRoutes: Routes = [
   { path: '', component: SneakerLandingComponent, children: [
@@ -23,8 +24,8 @@ const appRoutes: Routes = [
       {path: 'Trending', component: SneakerPopularComponent},
       {path: 'LatestPosts', component: SneakerPostComponent},
       {path: 'Favoritos', component: SneakerFavoritesComponent},
+      {path: 'Search', component: SneakerSearchComponent},
     ]},
-  { path: 'Favorites', component: SneakerFavoritesComponent},
   { path: 'Sneaker/:id', component: SneakerComponent},
 ];
 

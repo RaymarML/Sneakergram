@@ -1,0 +1,17 @@
+@import "src/app/variables";
+
+.form-sneaker {
+  width: 100%;
+  padding: 0.7em 0.5em;
+  background-color: white !important;
+  box-shadow: none;
+  border: 2px solid $input-color;
+  color: $input-color !important;
+}
+
+.fa-search {
+  position: absolute;
+  top: 35%;
+  right: 5%;
+  color: $input-color;
+}

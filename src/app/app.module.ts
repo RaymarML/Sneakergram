@@ -30,6 +30,7 @@ import { SneakerPagePresentationComponent } from './components/sneaker-page-pres
 import { SneakerPopularItemComponent } from './components/sneaker-popular-item/sneaker-popular-item.component';
 import { SneakerPopularComponent } from './components/sneaker-popular/sneaker-popular.component';
 import { SneakerRegisterComponent } from './components/sneaker-register/sneaker-register.component';
+import { SneakerSearchComponent } from './components/sneaker-search/sneaker-search.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { SneakerRegisterComponent } from './components/sneaker-register/sneaker-
     SneakerPagePresentationComponent,
     SneakerPopularItemComponent,
     SneakerPopularComponent,
-    SneakerRegisterComponent
+    SneakerRegisterComponent,
+    SneakerSearchComponent
   ],
   imports: [
     BrowserModule,

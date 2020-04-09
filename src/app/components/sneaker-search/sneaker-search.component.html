@@ -1,0 +1,20 @@
+<div class="my-2 w-100 position-relative text-center p-0">
+  <input type="text" placeholder="Buscar Zapatilla" class="form-sneaker" id="search">
+  <i class="fas fa-search"></i>
+</div>
+
+<div class="mt-3" *ngIf="searchSneakerObservable | async as sneakers">
+
+  <div class="row justify-content-start mt-2" *ngIf="sneakers.length > 0; else notFound">
+    <app-sneaker-box
+      *ngFor="let sneaker of sneakers" [sneaker]="sneaker">
+    </app-sneaker-box>
+  </div>
+
+  <ng-template #notFound>
+    <div class="w-100 bg-danger text-white py-2 px-1 text-center">
+      No se han encontrado resultados.
+    </div>
+  </ng-template>
+
+</div>

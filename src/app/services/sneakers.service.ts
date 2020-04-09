@@ -5,6 +5,7 @@ import {SneakerInterface} from "../model/SneakerInterface";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
 import {fromPromise} from "rxjs/internal-compatibility";
 import {AngularFireStorage} from "@angular/fire/storage";
+import * as firebase from "firebase";
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +67,19 @@ export class SneakersService {
         return {id, ...content};
       })
     );
+  }
+
+  searchSneaker(search: string): Observable<any> {
+    return this.angularFirestore.collection('sneaker',
+        ref => ref.orderBy('name').startAt(search).endAt(search + "\uf8ff"))
+      .snapshotChanges().pipe(
+      map(sneakers => {
+        return sneakers.map(sneaker => {
+          const content = sneaker.payload.doc.data() as SneakerInterface;
+          const id = sneaker.payload.doc.id;
+          return {id, ...content};
+        });
+      }));
   }
 
   deleteSneaker(id: string): Observable<any>{
