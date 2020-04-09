@@ -1,0 +1,29 @@
+<div class="row mx-0 h-100 align-content-center justify-content-center">
+
+  <div class="col-11 font-size-40 sneaker-font font-weight-light text-white">Inicia Sesión</div>
+  <app-error [message]="message" class="col-11" *ngIf="showError"></app-error>
+  <form class="col-11" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <div class="row mx-0 mt-2">
+      <input class="col-12 font-size-14 py-3" type="email" formControlName="email" placeholder="Email">
+    </div>
+    <div class="row mx-0 mt-2">
+      <input class="col-12 font-size-14 py-3" type="password" formControlName="password" placeholder="Contraseña">
+    </div>
+    <div class="row mx-0 mt-2 ">
+      <button
+        class="col-12 sneaker-font font-size-14 px-0 py-2"
+        [disabled]="!loginForm.valid"
+        [class.disabled]="!loginForm.valid"
+      >
+        Iniciar Sesion</button>
+    </div>
+  </form>
+  <button
+    class="col-10 sneaker-font font-size-14 px-0 py-2 mt-2"
+    (click)="loginGoogle()"
+  ><i class="fab fa-google"></i></button>
+  <div class="col-11 mt-2">
+    <a class="text-white" routerLink="/Access/Registration">¿No tienes una cuenta?</a>
+  </div>
+</div>
+

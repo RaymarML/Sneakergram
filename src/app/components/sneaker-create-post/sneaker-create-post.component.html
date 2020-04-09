@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <app-sneaker-subheader
+    [title]="title"
+  ></app-sneaker-subheader>
+  <div class="col-12">
+    <div class="row mt-2">
+      <input class="col-12 font-size-16 py-3" type="text" placeholder="Nombre">
+    </div>
+    <div class="row mt-2">
+      <input class="col-12 font-size-16 py-3" type="email" placeholder="Enlace al producto">
+    </div>
+    <div class="row mt-2 ">
+      <input class="col-12 font-size-16 py-3" type="email" placeholder="Enlace de imagen">
+    </div>
+    <div class="row mt-2 " *ngIf="numberOfLinksAvailable == 1 || numberOfLinksAvailable == 0">
+      <input class="col-12 font-size-16 py-3" type="email" placeholder="Enlace de imagen">
+    </div>
+    <div class="row mt-2 " *ngIf="numberOfLinksAvailable == 0">
+      <input class="col-12 font-size-16 py-3" type="email" placeholder="Enlace de imagen">
+    </div>
+    <div class="row align-items-center mt-2">
+      <app-sneaker-add-button (click)="addLink()"></app-sneaker-add-button>
+      <p class="sneaker-font font-size-14 col-4 text-center">Añadir enlace de imagen</p>
+      <p class="sneaker-font font-size-10 col-6 text-center">Puedes añadir {{numberOfLinksAvailable}} enlaces más</p>
+    </div>
+    <div class="row mt-2">
+      <textarea name="" id="" class="col-12 py-1 font-size-10" rows="5" placeholder="Descripción"></textarea>
+    </div>
+    <div class="row  mt-2 ">
+      <button class="col-8 sneaker-font font-size-14 px-0 py-2 ">Guardar</button>
+    </div>
+  </div>
+</div>

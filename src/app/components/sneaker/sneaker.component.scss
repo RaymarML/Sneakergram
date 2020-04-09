@@ -1,0 +1,21 @@
+@import "src/app/variables";
+
+.slide img {
+  height: calc(45vw + 10em);
+}
+
+.comments {
+  background-color: $comments-color;
+}
+
+button {
+  background-color: $sneaker-button;
+  padding: 5px;
+  border: 1px solid white;
+}
+
+.sneaker-buttons {
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+}

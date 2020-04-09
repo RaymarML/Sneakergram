@@ -1,0 +1,11 @@
+@import "../../../app/variables";
+
+.item-top{
+  background-color: #F4E9E9;
+}
+
+.item-bottom{
+  background-color: $main-color;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}

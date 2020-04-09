@@ -1,0 +1,14 @@
+<div class="side-menu-bg h-100" >
+  <div class="row h-100 mx-0 justify-content-end align-content-center sidebar">
+    <div class="col-12 text-center pt-3" (click)="openNav()">
+      <a routerLink="">Inicio</a>
+      <a routerLink="/Content/Últimos-Posts">Últimos Posts</a>
+      <a routerLink="/Content/Más-Popular" >Más Popular</a>
+      <a *ngIf="!userLog" routerLink="/Access/Login">Login</a>
+      <a *ngIf="!userLog" routerLink="/Access/Registration">Registrarse</a>
+      <a *ngIf="userLog"  routerLink="/Content/Favoritos">Favoritos</a>
+      <a routerLink="/Access/Account">Mi Cuenta</a>
+      <a *ngIf="userLog"  routerLink="" (click)="logout()">Cerrar Sesión</a>
+    </div>
+  </div>
+</div>

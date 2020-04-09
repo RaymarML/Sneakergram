@@ -1,0 +1,20 @@
+@import "src/app/variables";
+
+.side-menu-bg {
+  background-image: url("../../../assets/img/sidebar.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sidebar {
+  background-color: rgba(0,0,0,0.85);
+}
+
+a {
+  font-size: $font-size-calc;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: block;
+}

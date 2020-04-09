@@ -1,0 +1,4 @@
+<div class="img-wrapper" [routerLink]="['/Sneaker', sneaker.id]">
+  <img src="{{sneaker.imageUrl[0]}}" alt="">
+</div>
+<p class="sneaker-title mt-2">{{sneaker.name | slice: 0: 10}} ...</p>

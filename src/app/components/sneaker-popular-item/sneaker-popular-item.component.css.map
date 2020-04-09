@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,SAAS;EACP,gBAAgB,EAAE,OAAO;;AAG3B,YAAY;EACV,gBAAgB,ECPL,OAAO;EDQlB,0BAA0B,EAAE,IAAI;EAChC,yBAAyB,EAAE,IAAI",
+"sources": ["sneaker-popular-item.component.scss","../../variables.scss"],
+"names": [],
+"file": "sneaker-popular-item.component.css"
+}

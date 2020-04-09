@@ -1,0 +1,14 @@
+@import "variables";
+
+app-sneaker-side-menu{
+  top: 8vh;
+  left: 100%;
+  width: 100vw;
+  height: calc(100vh - 8vh);
+  transition: all 0.5s ease-in-out;
+  z-index: 9000;
+}
+
+.open-side-nav{
+  left: 0 !important;
+}

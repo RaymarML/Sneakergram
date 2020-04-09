@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <app-sneaker-subheader
+    [title]="title"
+  ></app-sneaker-subheader>
+  <div class="col-12">
+    <div class="row mt-2">
+      <input class="col-12 font-size-16 py-3" type="text" placeholder="Nombre">
+    </div>
+    <div id="post1" class="row mt-2">
+      <input class="col-12 font-size-16 py-3" type="email" placeholder="Elige un post">
+    </div>
+    <div class="row align-items-center mt-2">
+      <app-sneaker-add-button (click)="addPost()"></app-sneaker-add-button>
+      <p class="sneaker-font font-size-14 col-6 text-center">Añadir Post</p>
+    </div>
+    <div class="row  mt-2 ">
+      <button class="col-8 sneaker-font font-size-14 px-0 py-2 ">Guardar</button>
+    </div>
+  </div>
+</div>
+
