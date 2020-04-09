@@ -20,7 +20,7 @@ const appRoutes: Routes = [
       {path: 'Access/Account', component: UserProfileComponent }]
   },
   { path: 'Content', component: SneakerContentPageComponent, children: [
-      {path: 'Más-Popular', component: SneakerPopularComponent},
+      {path: 'Trending', component: SneakerPopularComponent},
       {path: 'LatestPosts', component: SneakerPostComponent},
       {path: 'Favoritos', component: SneakerFavoritesComponent},
     ]},
