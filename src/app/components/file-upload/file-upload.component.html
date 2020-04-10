@@ -1,0 +1,6 @@
+<p class="text-center font-size-14 mt-2">Subiendo: {{file.name}}</p>
+<div class="progress mb-2" *ngIf="percentage | async as progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated"
+       role="progressbar" [ngStyle]="{width: progress + '%'}"
+  ></div>
+</div>

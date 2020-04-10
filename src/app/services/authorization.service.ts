@@ -12,14 +12,15 @@ import { User, auth } from "firebase";
 export class AuthorizationService {
 
   currentUser: Observable<User>;
+  uid: string
 
   constructor(
     private angularFireAuth: AngularFireAuth,
   ) {
     this.currentUser = this.angularFireAuth.authState;
-
-
-
+    this.currentUser.subscribe( value => {
+      this.uid = value.uid;
+    })
   }
 
   sigInWithEmailAndPassword(user: UserInterface) {

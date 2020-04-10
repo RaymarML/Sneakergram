@@ -5,7 +5,6 @@ import {SneakerInterface} from "../model/SneakerInterface";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
 import {fromPromise} from "rxjs/internal-compatibility";
 import {AngularFireStorage} from "@angular/fire/storage";
-import * as firebase from "firebase";
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +12,12 @@ import * as firebase from "firebase";
 export class SneakersService {
 
   private sneakerCollection : AngularFirestoreCollection<SneakerInterface>;
-  private uploadFolder:string;
 
   constructor(
     private angularFirestore: AngularFirestore,
     private storage: AngularFireStorage
   ) {
     this.sneakerCollection = this.angularFirestore.collection<SneakerInterface>('sneaker');
-    this.uploadFolder = 'images/';
   }
 
   getAllSneakers(): Observable<SneakerInterface[]> {
@@ -86,12 +83,7 @@ export class SneakersService {
     return fromPromise(this.sneakerCollection.doc(id).delete());
   }
 
-  createSneaker(sneaker: SneakerInterface, images: File[]){
-
+  createSneaker(sneaker: SneakerInterface){
+    return fromPromise(this.sneakerCollection.add(sneaker));
   }
-
-  uploadImage(sneaker: SneakerInterface, image:File) {
-
-  }
-
 }

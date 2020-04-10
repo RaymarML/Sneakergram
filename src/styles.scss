@@ -2,6 +2,11 @@
 @import "./app/variables";
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
 .title-page {
   color: $title-color;
   text-transform: uppercase;

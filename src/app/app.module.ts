@@ -36,6 +36,7 @@ import { SneakerCreatePostComponent } from './components/sneaker-create-post/sne
 import { SneakerMyCollectionsComponent } from './components/sneaker-my-collections/sneaker-my-collections.component';
 import { SneakerMyPostsComponent } from './components/sneaker-my-posts/sneaker-my-posts.component';
 import { SneakerSubheaderComponent } from './components/sneaker-subheader/sneaker-subheader.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { SneakerSubheaderComponent } from './components/sneaker-subheader/sneake
     SneakerMyCollectionsComponent,
     SneakerMyPostsComponent,
     SneakerSubheaderComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,

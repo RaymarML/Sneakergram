@@ -1,8 +1,8 @@
 export interface SneakerInterface {
-
   name: string,
-  imageUrl: any,
+  imageUrl: string[],
   description: string,
   shopUrl: string
-  id: string
+  id?: string
+  uid: string
 }
