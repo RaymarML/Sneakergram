@@ -23,10 +23,6 @@ export class SneakerLoginComponent implements OnInit {
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("", [Validators.required]),
     });
-
-    this.authorizationService.currentUser.subscribe(value => {
-      if(value != null) this.router.navigate(['/Content/LatestPosts'])
-    })
   }
 
   ngOnInit(): void {
