@@ -32,7 +32,7 @@ input, input:active, input:focus, input:visited, input::placeholder{
   outline: none;
 }
 
-button, button:active, button:focus, button:visited{
+button, button:active, button:focus, button:visited, .button{
   background-color: $main-color;
   color: white !important;
   font-weight: bold;
