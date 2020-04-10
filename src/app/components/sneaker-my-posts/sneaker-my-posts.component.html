@@ -1,6 +1,17 @@
-<div>
+<div *ngIf="sneakerObservable | async as sneakers; else loading">
   <app-sneaker-page-presentation [title]="title"></app-sneaker-page-presentation>
-  <div class="row mx-0 justify-content-center my-3">
-    <button routerLink="Create-Post" class="col-9 px-0 py-2 font-size-14 mt-3">Crear Publicación</button>
+
+  <div class="row justify-content-center mb-2">
+    <button routerLink="Create-Post" class="col-11 px-0 py-2 font-size-14 mt-3">Crear Publicación</button>
+  </div>
+
+  <div class="row justify-content-start mt-2" >
+    <app-sneaker-box
+      *ngFor="let sneaker of sneakers" [sneaker]="sneaker">
+    </app-sneaker-box>
   </div>
 </div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

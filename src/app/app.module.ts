@@ -37,6 +37,7 @@ import { SneakerMyCollectionsComponent } from './components/sneaker-my-collectio
 import { SneakerMyPostsComponent } from './components/sneaker-my-posts/sneaker-my-posts.component';
 import { SneakerSubheaderComponent } from './components/sneaker-subheader/sneaker-subheader.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     AngularFirestoreModule,
     AngularFireStorageModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {

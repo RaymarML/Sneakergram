@@ -86,4 +86,17 @@ export class SneakersService {
   createSneaker(sneaker: SneakerInterface){
     return fromPromise(this.sneakerCollection.add(sneaker));
   }
+
+  getUserPosts(uid: string) {
+    return this.angularFirestore.collection('sneaker',
+      ref => ref.orderBy('name').where("uid", "==", uid))
+      .snapshotChanges().pipe(
+        map(sneakers => {
+          return sneakers.map(sneaker => {
+            const content = sneaker.payload.doc.data() as SneakerInterface;
+            const id = sneaker.payload.doc.id;
+            return {id, ...content};
+          });
+        }));
+  }
 }

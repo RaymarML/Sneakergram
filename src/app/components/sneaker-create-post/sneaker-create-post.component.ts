@@ -44,10 +44,10 @@ export class SneakerCreatePostComponent implements OnInit {
 
   addSneaker(sneakerForm: FormGroup) {
     if (sneakerForm.valid) {
-      const {name, description, shopUrl} = sneakerForm.value
+      const {name , description, shopUrl}= sneakerForm.value
 
       this.sneaker = {
-        name: name,
+        name: name.toLocaleLowerCase(),
         shopUrl: shopUrl,
         description: description,
         uid: this.authorizationService.uid,

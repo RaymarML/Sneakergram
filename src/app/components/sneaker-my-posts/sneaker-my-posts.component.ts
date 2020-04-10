@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {SneakersService} from "../../services/sneakers.service";
+import {AuthorizationService} from "../../services/authorization.service";
+import {Observable} from "rxjs";
+import {SneakerInterface} from "../../model/SneakerInterface";
 
 @Component({
   selector: 'app-sneaker-my-posts',
@@ -7,10 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SneakerMyPostsComponent implements OnInit {
 
+  sneakerObservable: Observable<SneakerInterface[]>;
+
   title: string = "Mis Publicaciones";
-  constructor() { }
+  constructor(
+    private sneakersService: SneakersService,
+    private authorizationService: AuthorizationService
+  ) {
+
+  }
 
   ngOnInit(): void {
+    this.authorizationService.currentUser.subscribe(value => {
+      this.sneakerObservable = this.sneakersService.getUserPosts(value.uid);
+    });
+
   }
 
 }

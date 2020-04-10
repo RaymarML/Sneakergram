@@ -23,7 +23,7 @@ export class SneakerSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchSneakerObservable = this.inputSearch = fromEvent( $('#search'), 'keyup').pipe(
-      map( (text: any) => text.target.value ),
+      map( (text: any) => text.target.value.toLocaleLowerCase() ),
       filter((search: string) => search.length > 0),
       debounceTime(400),
       distinctUntilChanged(),
