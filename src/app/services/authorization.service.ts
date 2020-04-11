@@ -21,6 +21,7 @@ export class AuthorizationService {
     this.currentUser.subscribe( value => {
       this.uid = value.uid;
     })
+
   }
 
   sigInWithEmailAndPassword(user: UserInterface) {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { SneakersService } from "../../services/sneakers.service";
 import {SneakerInterface} from "../../model/SneakerInterface";
+import {AuthorizationService} from "../../services/authorization.service";
 
 @Component({
   selector: 'app-sneaker',
@@ -11,6 +12,7 @@ import {SneakerInterface} from "../../model/SneakerInterface";
 export class SneakerComponent implements OnInit {
 
   sneaker: SneakerInterface;
+
   slideConfig = {
     "slidesToShow": 1,
     "slidesToScroll": 1,
@@ -20,7 +22,10 @@ export class SneakerComponent implements OnInit {
     "mobileFirst": true
   };
 
+
+
   constructor(
+    private authorizationService: AuthorizationService,
     private sneakersService: SneakersService,
     private activatedRoute: ActivatedRoute,
     private router: Router

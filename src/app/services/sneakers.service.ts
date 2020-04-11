@@ -4,7 +4,7 @@ import {map} from "rxjs/operators";
 import {SneakerInterface} from "../model/SneakerInterface";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
 import {fromPromise} from "rxjs/internal-compatibility";
-import {AngularFireStorage} from "@angular/fire/storage";
+import {AuthorizationService} from "./authorization.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,16 @@ import {AngularFireStorage} from "@angular/fire/storage";
 export class SneakersService {
 
   private sneakerCollection : AngularFirestoreCollection<SneakerInterface>;
+  private uid: string;
 
   constructor(
     private angularFirestore: AngularFirestore,
-    private storage: AngularFireStorage
+    private authorizationService: AuthorizationService,
   ) {
     this.sneakerCollection = this.angularFirestore.collection<SneakerInterface>('sneaker');
+    this.authorizationService.currentUser.subscribe(value => {
+      this.uid = value.uid;
+    })
   }
 
   getAllSneakers(): Observable<SneakerInterface[]> {
@@ -84,6 +88,7 @@ export class SneakersService {
   }
 
   createSneaker(sneaker: SneakerInterface){
+    sneaker.uid = this.uid;
     return fromPromise(this.sneakerCollection.add(sneaker));
   }
 

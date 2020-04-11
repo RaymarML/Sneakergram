@@ -28,7 +28,6 @@ export class SneakerCreatePostComponent implements OnInit {
 
   constructor(
     private sneakersService: SneakersService,
-    private authorizationService: AuthorizationService,
     private router: Router
   ) {
     this.sneakerForm = new FormGroup({
@@ -50,7 +49,7 @@ export class SneakerCreatePostComponent implements OnInit {
         name: name.toLocaleLowerCase(),
         shopUrl: shopUrl,
         description: description,
-        uid: this.authorizationService.uid,
+        uid: '',
         imageUrl: []
       }
 
