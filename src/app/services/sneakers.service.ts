@@ -70,6 +70,11 @@ export class SneakersService {
     );
   }
 
+  getLikes(id:string): Observable<any> {
+    return this.sneakerCollection.doc(id).collection('likes'
+    ).snapshotChanges();
+  }
+
 
   searchSneaker(search: string): Observable<any> {
     return this.angularFirestore.collection('sneaker',

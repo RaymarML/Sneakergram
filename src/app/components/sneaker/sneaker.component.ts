@@ -28,6 +28,7 @@ export class SneakerComponent implements OnInit {
 
   isLog: boolean;
   showForm: boolean = false;
+  likes: number;
 
   constructor(
     private authorizationService: AuthorizationService,
@@ -51,6 +52,8 @@ export class SneakerComponent implements OnInit {
       );
 
       this.commentsObservable = this.commentsService.getComments(params['id']);
+      this.sneakersService.getLikes(params['id']).subscribe(value => this.likes = value.length)
+
     })
 
     this.authorizationService.currentUser.subscribe(value => {

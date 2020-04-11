@@ -8,12 +8,24 @@
     </div>
   </ngx-slick-carousel>
 
-  <div class="mt-5">
+  <span class="my-2 d-inline-block">
+    {{likes}}
+    <i class="fas fa-heart text-danger"></i>
+  </span>
+
+  <div class="mt-2 mb-3">
     <p class="sneaker-title mb-2">{{sneaker.name}}</p>
     <p>{{sneaker.description}}</p>
   </div>
 
-  <div class="mt-2">
+  <div class="row justify-content-center mx-auto my-2">
+    <a class="col-7 mr-2 button text-center my-auto" href="{{sneaker.shopUrl}}" target="_blank">
+      Adquirir
+    </a>
+    <button class="col-3 button"><i class="fas fa-heart"></i></button>
+  </div>
+
+  <div class="mt-4">
     <p class="sneaker-title mb-2">Comentarios</p>
     <div *ngIf="isLog">
       <button class="mb-2" (click)="manageForm(!showForm)" *ngIf="!showForm">Añadir comentario</button>
@@ -35,12 +47,7 @@
 
   </div>
 
-  <div class="row justify-content-center position-sticky w-100 sneaker-buttons pb-2 mt-5">
-    <a class="col-7 mr-2 button text-center my-auto" href="{{sneaker.shopUrl}}" target="_blank">
-      Adquirir
-    </a>
-    <button class="col-3 button"><i class="fas fa-heart"></i></button>
-  </div>
+
 </div>
 
 <ng-template #loading>
