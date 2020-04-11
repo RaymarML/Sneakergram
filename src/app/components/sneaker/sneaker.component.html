@@ -8,9 +8,7 @@
     </div>
   </ngx-slick-carousel>
 
-  <small>Subido por Adrián</small>
-
-  <div class="my-3">
+  <div class="mt-5">
     <p class="sneaker-title mb-2">{{sneaker.name}}</p>
     <p>{{sneaker.description}}</p>
   </div>
@@ -24,11 +22,10 @@
                           [sneakerUid]="sneaker.id"></app-create-comment>
     </div>
 
-    <div class="row justify-content-center mt-2" *ngIf="commentsObservable | async as comments">
-
-      <ng-template *ngIf="comments.length > 0; else nocomments">
-        <app-sneaker-comments *ngFor="let comment of comments" [comment]="comment"></app-sneaker-comments>
-      </ng-template>
+    <div *ngIf="commentsObservable | async as comments">
+      <div class="row justify-content-center mt-2 mb-4" *ngIf="comments.length > 0; else nocomments">
+        <app-sneaker-comments *ngFor="let comment of comments;" [comment]="comment"></app-sneaker-comments>
+      </div>
 
       <ng-template #nocomments>
         Esta zapatilla no cuenta con ningún comentario.

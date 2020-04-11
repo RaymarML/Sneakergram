@@ -50,7 +50,7 @@ export class SneakerComponent implements OnInit {
         }
       );
 
-      this.commentsObservable = this.commentsService.getComments(params['id'])
+      this.commentsObservable = this.commentsService.getComments(params['id']);
     })
 
     this.authorizationService.currentUser.subscribe(value => {

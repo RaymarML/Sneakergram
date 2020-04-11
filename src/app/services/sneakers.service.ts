@@ -60,8 +60,8 @@ export class SneakersService {
     )
   }
 
-  getSneaker(id:number): Observable<SneakerInterface> {
-    return this.angularFirestore.doc<SneakerInterface>("sneaker/" + id).snapshotChanges().pipe(
+  getSneaker(id:string): Observable<SneakerInterface> {
+    return this.sneakerCollection.doc(id).snapshotChanges().pipe(
       map(sneaker => {
         const content = sneaker.payload.data() as SneakerInterface;
         const id = sneaker.payload.id;
@@ -69,6 +69,7 @@ export class SneakersService {
       })
     );
   }
+
 
   searchSneaker(search: string): Observable<any> {
     return this.angularFirestore.collection('sneaker',
