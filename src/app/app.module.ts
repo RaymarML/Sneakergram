@@ -40,6 +40,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { SneakerCommentsComponent } from './components/sneaker-comments/sneaker-comments.component';
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
+import { SneakerMenuComponent } from './components/sneaker-menu/sneaker-menu.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { CreateCommentComponent } from './components/create-comment/create-comme
     FileUploadComponent,
     SneakerCommentsComponent,
     CreateCommentComponent,
+    SneakerMenuComponent,
   ],
   imports: [
     BrowserModule,

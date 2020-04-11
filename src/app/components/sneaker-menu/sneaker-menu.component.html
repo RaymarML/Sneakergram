@@ -1,0 +1,9 @@
+<div class="row justify-content-center mx-auto my-2">
+  <a class="col-7 mr-2 button text-center my-auto" href="{{shopUrl}}" target="_blank">
+    Adquirir
+  </a>
+  <button class="col-3 button" (click)="toggleLike()" *ngIf="userlog != null">
+    <i class="fas fa-heart" [class.selected]="like != null"></i>
+  </button>
+
+</div>

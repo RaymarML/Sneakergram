@@ -13,7 +13,6 @@ declare var $:any;
 export class SneakerSearchComponent implements OnInit {
 
   searchSneakerObservable: Observable<SneakerInterface[]>;
-  inputSearch: Observable<string>;
 
   constructor(
     private sneakersService: SneakersService
@@ -22,7 +21,7 @@ export class SneakerSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchSneakerObservable = this.inputSearch = fromEvent( $('#search'), 'keyup').pipe(
+    this.searchSneakerObservable = fromEvent( $('#search'), 'keyup').pipe(
       map( (text: any) => text.target.value.toLocaleLowerCase() ),
       filter((search: string) => search.length > 0),
       debounceTime(400),

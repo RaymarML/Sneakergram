@@ -1,0 +1,12 @@
+@import "src/app/variables";
+
+.button {
+  background-color: $sneaker-button;
+  padding: 5px;
+  border: 1px solid white;
+
+  .selected {
+    color: red;
+  }
+
+}

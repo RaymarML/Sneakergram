@@ -61,6 +61,9 @@ export class SneakerComponent implements OnInit {
     });
   }
 
+
+
+
   manageForm(form: boolean) {
     this.showForm = form;
   }

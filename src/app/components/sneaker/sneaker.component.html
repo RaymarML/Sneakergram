@@ -18,12 +18,7 @@
     <p>{{sneaker.description}}</p>
   </div>
 
-  <div class="row justify-content-center mx-auto my-2">
-    <a class="col-7 mr-2 button text-center my-auto" href="{{sneaker.shopUrl}}" target="_blank">
-      Adquirir
-    </a>
-    <button class="col-3 button"><i class="fas fa-heart"></i></button>
-  </div>
+  <app-sneaker-menu [shopUrl]="sneaker.shopUrl" [sneakerId]="sneaker.id"></app-sneaker-menu>
 
   <div class="mt-4">
     <p class="sneaker-title mb-2">Comentarios</p>
@@ -44,10 +39,7 @@
       </ng-template>
 
     </div>
-
   </div>
-
-
 </div>
 
 <ng-template #loading>
