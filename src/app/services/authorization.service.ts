@@ -19,7 +19,10 @@ export class AuthorizationService {
   ) {
     this.currentUser = this.angularFireAuth.authState;
     this.currentUser.subscribe( value => {
-      this.uid = value.uid;
+      if(value != null){
+        this.uid = value.uid;
+      }
+
     })
 
   }
@@ -37,4 +40,6 @@ export class AuthorizationService {
   signOut(){
     this.angularFireAuth.signOut();
   }
+
+
 }

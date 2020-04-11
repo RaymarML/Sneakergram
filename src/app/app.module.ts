@@ -38,6 +38,8 @@ import { SneakerMyPostsComponent } from './components/sneaker-my-posts/sneaker-m
 import { SneakerSubheaderComponent } from './components/sneaker-subheader/sneaker-subheader.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { SneakerCommentsComponent } from './components/sneaker-comments/sneaker-comments.component';
+import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 
 
 @NgModule({
@@ -68,6 +70,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     SneakerMyPostsComponent,
     SneakerSubheaderComponent,
     FileUploadComponent,
+    SneakerCommentsComponent,
+    CreateCommentComponent,
   ],
   imports: [
     BrowserModule,

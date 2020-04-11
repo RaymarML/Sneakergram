@@ -17,17 +17,32 @@
 
   <div class="mt-2">
     <p class="sneaker-title mb-2">Comentarios</p>
-
-    <div class="comments py-3 px-2">
-      Añadir un comentario
+    <div *ngIf="isLog">
+      <button class="mb-2" (click)="manageForm(!showForm)" *ngIf="!showForm">Añadir comentario</button>
+      <app-create-comment *ngIf="showForm"
+                          (closeFormEmitter)="manageForm($event)"
+                          [sneakerUid]="sneaker.id"></app-create-comment>
     </div>
+
+    <div class="row justify-content-center mt-2" *ngIf="commentsObservable | async as comments">
+
+      <ng-template *ngIf="comments.length > 0; else nocomments">
+        <app-sneaker-comments *ngFor="let comment of comments" [comment]="comment"></app-sneaker-comments>
+      </ng-template>
+
+      <ng-template #nocomments>
+        Esta zapatilla no cuenta con ningún comentario.
+      </ng-template>
+
+    </div>
+
   </div>
 
   <div class="row justify-content-center position-sticky w-100 sneaker-buttons pb-2 mt-5">
     <a class="col-7 mr-2 button text-center my-auto" href="{{sneaker.shopUrl}}" target="_blank">
       Adquirir
     </a>
-    <button class="col-3"><i class="fas fa-heart"></i></button>
+    <button class="col-3 button"><i class="fas fa-heart"></i></button>
   </div>
 </div>
 

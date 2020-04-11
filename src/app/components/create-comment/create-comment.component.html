@@ -1,0 +1,14 @@
+<form class="row justify-content-center my-2"
+      [formGroup]="commentForm" (ngSubmit)="createComment(commentForm.value)">
+  <div class="row justify-content-center">
+  <textarea rows="3"
+            placeholder="Insertar Comentario"
+            class="col-10" formControlName="comment"></textarea>
+    <small class="form-text text-muted">Máximo 255 caracteres.</small>
+  </div>
+  <button
+    class="col-4 mt-2 mr-2"
+    [class.disabled]="!commentForm.valid"
+    [disabled]="!commentForm.valid">Crear</button>
+  <button class="col-4 mt-2" (click)="closeForm()">Cerrar</button>
+</form>
