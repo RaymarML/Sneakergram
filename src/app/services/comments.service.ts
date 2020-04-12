@@ -5,6 +5,7 @@ import {CommentInterface} from "../model/CommentInterface";
 import {fromPromise} from "rxjs/internal-compatibility";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
+import {SneakerInterface} from "../model/SneakerInterface";
 
 @Injectable({
   providedIn: 'root'
@@ -12,27 +13,26 @@ import {Observable} from "rxjs";
 export class CommentsService {
 
   private uid: string;
-  private commentCollection: AngularFirestoreCollection<CommentInterface>;
+  private sneakerCollection: AngularFirestoreCollection<SneakerInterface>;
 
   constructor(
 
     private angularFirestore: AngularFirestore,
     private authorizationService: AuthorizationService,
   ) {
-    this.commentCollection = this.angularFirestore.collection<CommentInterface>('comment');
+    this.sneakerCollection = this.angularFirestore.collection<SneakerInterface>('sneaker');
     this.authorizationService.currentUser.subscribe(value => {
       this.uid = value.uid;
     })
   }
 
-  createComment(comment: CommentInterface){
+  createComment(comment: CommentInterface, sneakerId: string){
     comment.uid = this.uid;
-    return fromPromise(this.commentCollection.add(comment));
+    return fromPromise(this.sneakerCollection.doc(sneakerId).collection('comments').add(comment));
   }
 
   getComments(sneakerId: string): Observable<CommentInterface[]>{
-    return this.angularFirestore.collection('comment',
-      ref => ref.where("sneakerid", "==", sneakerId))
+    return this.sneakerCollection.doc(sneakerId).collection('comments')
       .snapshotChanges().pipe(
         map(comments => {
           return comments.map(comment => {

@@ -50,7 +50,8 @@ export class SneakerCreatePostComponent implements OnInit {
         shopUrl: shopUrl,
         description: description,
         uid: '',
-        imageUrl: []
+        imageUrl: [],
+        created_at: Date.now()
       }
 
       this.startUploadFiles = true;

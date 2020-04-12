@@ -30,9 +30,9 @@ export class CreateCommentComponent implements OnInit {
     if (this.commentForm.valid){
       const comment: CommentInterface = {
         comment: content.comment,
-        sneakerid: this.sneakerUid
+        created_at: Date.now()
       }
-      this.commentsService.createComment(comment);
+      this.commentsService.createComment(comment, this.sneakerUid);
     }
     this.closeForm();
   }
