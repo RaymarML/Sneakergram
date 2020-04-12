@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthorizationService} from "../../services/authorization.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sneaker-register',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SneakerRegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authorizationService: AuthorizationService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
+    this.authorizationService.currentUser.subscribe(value => {
+      if (value != null){
+        this.router.navigate(['/Content/LatestPosts']);
+      }
+    })
   }
 
 }

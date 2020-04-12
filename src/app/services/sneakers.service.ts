@@ -20,9 +20,7 @@ export class SneakersService {
     private authorizationService: AuthorizationService,
   ) {
     this.sneakerCollection = this.angularFirestore.collection<SneakerInterface>('sneaker');
-    this.authorizationService.currentUser.subscribe(value => {
-      this.uid = value.uid;
-    })
+    this.uid = this.authorizationService.getUid();
   }
 
   getAllSneakers(): Observable<SneakerInterface[]> {

@@ -15,12 +15,9 @@ export class SneakerFavoritesComponent implements OnInit {
 
   constructor(
     private sneakersService: SneakersService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.sneakerObservable = this.sneakersService.getFavorites();
   }
-
 }

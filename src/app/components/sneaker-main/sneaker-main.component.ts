@@ -1,23 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Component} from '@angular/core';
 import {AuthorizationService} from "../../services/authorization.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sneaker-main',
   templateUrl: './sneaker-main.component.html',
   styleUrls: ['./sneaker-main.component.scss']
 })
-export class SneakerMainComponent implements OnInit {
+export class SneakerMainComponent{
 
   constructor(
+    private authorizationService: AuthorizationService,
     private router: Router,
-    private authorizationService: AuthorizationService
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.authorizationService.currentUser.subscribe(value => {
-      if(value != null) this.router.navigate(['/Content/LatestPosts'])
+      if (value != null){
+        this.router.navigate(['/Content/LatestPosts']);
+      }
     })
   }
-
-  ngOnInit(): void {}
 
 }

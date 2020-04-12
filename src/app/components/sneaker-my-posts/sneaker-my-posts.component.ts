@@ -12,8 +12,8 @@ import {SneakerInterface} from "../../model/SneakerInterface";
 export class SneakerMyPostsComponent implements OnInit {
 
   sneakerObservable: Observable<SneakerInterface[]>;
-
   title: string = "Mis Publicaciones";
+
   constructor(
     private sneakersService: SneakersService,
     private authorizationService: AuthorizationService
@@ -22,10 +22,7 @@ export class SneakerMyPostsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authorizationService.currentUser.subscribe(value => {
-      this.sneakerObservable = this.sneakersService.getUserPosts(value.uid);
-    });
-
+    this.sneakerObservable = this.sneakersService.getUserPosts(this.authorizationService.getUid());
   }
 
 }

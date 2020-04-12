@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from "../../services/authorization.service";
+import {Router} from "@angular/router";
 declare var $:any;
 
 @Component({
@@ -10,8 +11,6 @@ declare var $:any;
 export class SneakerSideMenuComponent implements OnInit {
 
   userLog: boolean = false;
-  popularHeader:string = "Más Popular";
-  postHeader:string = "Últimos Post";
 
   constructor(
     private authenticationService: AuthorizationService
@@ -24,9 +23,6 @@ export class SneakerSideMenuComponent implements OnInit {
       value => {
         this.userLog = value != null;
       },
-      error => {
-        this.userLog = false;
-      }
     )
   }
 

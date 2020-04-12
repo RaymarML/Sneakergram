@@ -16,14 +16,11 @@ export class CommentsService {
   private sneakerCollection: AngularFirestoreCollection<SneakerInterface>;
 
   constructor(
-
     private angularFirestore: AngularFirestore,
     private authorizationService: AuthorizationService,
   ) {
     this.sneakerCollection = this.angularFirestore.collection<SneakerInterface>('sneaker');
-    this.authorizationService.currentUser.subscribe(value => {
-      this.uid = value.uid;
-    })
+    this.uid = this.authorizationService.getUid();
   }
 
   createComment(comment: CommentInterface, sneakerId: string){

@@ -26,24 +26,19 @@ export class SneakerLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.authorizationService.currentUser.subscribe(value => {
+      if (value != null){
+        this.router.navigate(['/Content/LatestPosts']);
+      }
+    })
   }
 
   loginGoogle(){
-    this.authorizationService.sigInWithGoogle().subscribe(
-      value => this.router.navigate(['/Content/LatestPosts']),
-      error => this.showError = true
-    );
+    this.authorizationService.sigInWithGoogle().subscribe()
   }
 
   onSubmit(form: UserInterface){
-    this.authorizationService.sigInWithEmailAndPassword(form).subscribe(
-      value => {
-        this.router.navigate(['/Content/LatestPosts']);
-      },error => {
-        this.showError = true;
-      }
-    );
+    this.authorizationService.sigInWithEmailAndPassword(form).subscribe();
   }
 
 }
