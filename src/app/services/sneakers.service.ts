@@ -38,7 +38,9 @@ export class SneakersService {
   }
 
   getLastPosts(): Observable<SneakerInterface[]> {
-    return this.sneakerCollection.snapshotChanges().pipe(
+    return this.angularFirestore
+      .collection('sneaker', ref => ref.orderBy('created_at', 'desc'))
+      .snapshotChanges().pipe(
       map(sneakers => {
         return sneakers.map(sneaker => {
           const content = sneaker.payload.doc.data() as SneakerInterface;
@@ -50,7 +52,7 @@ export class SneakersService {
   }
 
   getFavorites(): Observable<SneakerInterface[]> {
-    return this.sneakerCollection.snapshotChanges().pipe(
+    return this.angularFirestore.collection('sneaker').snapshotChanges().pipe(
       map(sneakers => {
         return sneakers.map(sneaker => {
           const content = sneaker.payload.doc.data() as SneakerInterface;
