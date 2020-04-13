@@ -1,0 +1,34 @@
+<div class="row mx-0 my-4">
+  <div class="col-12">
+    <div class="row justify-content-end align-items-center">
+      <app-sneaker-edit-button></app-sneaker-edit-button>
+      <app-sneaker-delete-button class="ml-3" (click)="deleteMyPost()"></app-sneaker-delete-button>
+    </div>
+  </div>
+  <div (click)="openPostData()" class="col-12 p-1 item-top">
+    <img class="img-fit" src="{{sneaker.imageUrl[0]}}" alt="">
+  </div>
+  <div class="col-12 item-bottom">
+    <div class="row my-2">
+      <p class="col-5 sneaker-font font-size-12 font-weight-bold">Nombre del producto:</p>
+      <p class="col-7 sneaker-font font-size-12 text-capitalize">{{sneaker.name}}</p>
+    </div>
+    <div class="row my-2">
+      <p class="col-5 sneaker-font font-size-12 font-weight-bold">Enlace del producto:</p>
+      <div class="col-7 overflow-x-hidden">
+        <p class=" sneaker-font font-size-10 ">
+          {{sneaker.shopUrl}}
+        </p>
+      </div>
+    </div>
+    <div class="row my-2">
+      <p class="col-5 sneaker-font font-size-12 font-weight-bold ">Fecha de publicación:</p>
+      <p class="col-7 overflow-x-hidden sneaker-font font-size-12">
+        {{sneaker.created_at | date: 'dd-MM-yyyy'}}</p>
+    </div>
+    <div class="row my-2">
+      <p class="col-5 sneaker-font font-size-12 font-weight-bold">Me gustas</p>
+      <p class="col-7 sneaker-font font-size-12">{{likes}} <i class="fa fa-heart"></i></p>
+    </div>
+  </div>
+</div>

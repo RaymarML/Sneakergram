@@ -13,16 +13,12 @@ import {AuthorizationService} from "./authorization.service";
 export class LikesService {
 
   private sneakerCollection : AngularFirestoreCollection<SneakerInterface>;
-  private uid: string;
 
   constructor(
     private angularFirestore: AngularFirestore,
     private authorizationService: AuthorizationService,
   ) {
     this.sneakerCollection = this.angularFirestore.collection<SneakerInterface>('sneaker');
-    this.authorizationService.currentUser.subscribe(value => {
-      this.uid = value.uid;
-    })
   }
 
   getLikes(id:string): Observable<LikeInterface[]> {
@@ -51,6 +47,7 @@ export class LikesService {
   }
 
   addLike(id: string, like:LikeInterface): Observable<any> {
+    like.uid = this.authorizationService.getUid();
     return fromPromise(this.sneakerCollection.doc(id).collection('likes').add(like));
   }
 

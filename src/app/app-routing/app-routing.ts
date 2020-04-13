@@ -18,13 +18,15 @@ import {SneakerCreatePostComponent} from "../components/sneaker-create-post/snea
 import {SneakerCreateCollectionComponent} from "../components/sneaker-create-collection/sneaker-create-collection.component";
 
 import {AuthGuard} from "../guards/auth.guard";
+import {PagePresentationComponent} from "../components/page-presentation/page-presentation.component";
 
 const appRoutes: Routes = [
-  { path: '', component: SneakerLandingComponent, children: [
+  { path: '', component: PagePresentationComponent},
+  { path: 'Access', component: SneakerLandingComponent, children: [
       {path: '', component: SneakerMainComponent},
-      {path: 'Access/Login', component: SneakerLoginComponent },
-      {path: 'Access/Registration', component: SneakerRegisterComponent },
-      {path: 'Access/Account', component: UserProfileComponent, canActivate: [AuthGuard]}]
+      {path: 'Login', component: SneakerLoginComponent },
+      {path: 'Registration', component: SneakerRegisterComponent },
+      {path: 'Account', component: UserProfileComponent, canActivate: [AuthGuard]}]
   },
   { path: 'Content', component: SneakerContentPageComponent, children: [
       {path: 'Trending', component: SneakerPopularComponent},

@@ -1,0 +1,28 @@
+<div class="container-fluid p-0">
+  <div class="row mx-0 justify-content-end">
+    <app-sneaker-edit-button></app-sneaker-edit-button>
+    <app-sneaker-delete-button class="ml-3"></app-sneaker-delete-button>
+  </div>
+  <div class="row mx-0 mt-1 justify-content-center">
+    <p class="col-12 text-center font-size-24 sneaker-font">NIKE Supreme</p>
+    <span class="col-8 mt-2" style="height: 1px; background-color: black"></span>
+  </div>
+  <ngx-slick-carousel class="carousel position-relative"
+                      #slickModal="slick-carousel"
+                      [config]="slideConfig">
+
+
+    <div ngxSlickItem class="slide ">
+      <img src="../../../assets/img/dummy.jpg" alt="" class="w-100">
+    </div>
+    <div ngxSlickItem class="slide">
+      <img src="../../../assets/img/dummy.jpg" alt="" class="w-100">
+    </div>
+    <div ngxSlickItem class="slide">
+      <img src="../../../assets/img/dummy.jpg" alt="" class="w-100">
+    </div>
+  </ngx-slick-carousel>
+  <div class="mx-0 pt-2 row justify-content-center">
+    <p class="font-size-12 sneaker-font">A 20 usuarios le ha gustado</p>
+  </div>
+</div>

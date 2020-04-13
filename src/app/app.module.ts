@@ -41,6 +41,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { SneakerCommentsComponent } from './components/sneaker-comments/sneaker-comments.component';
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 import { SneakerMenuComponent } from './components/sneaker-menu/sneaker-menu.component';
+import { PagePresentationComponent } from './components/page-presentation/page-presentation.component';
+import { SneakerDeleteButtonComponent } from './components/sneaker-delete-button/sneaker-delete-button.component';
+import { SneakerEditButtonComponent } from './components/sneaker-edit-button/sneaker-edit-button.component';
+import { SneakerCollectionComponent } from './components/sneaker-collection/sneaker-collection.component';
+import { SneakerUserPostComponent } from './components/sneaker-user-post/sneaker-user-post.component';
 
 
 @NgModule({
@@ -74,6 +79,11 @@ import { SneakerMenuComponent } from './components/sneaker-menu/sneaker-menu.com
     SneakerCommentsComponent,
     CreateCommentComponent,
     SneakerMenuComponent,
+    PagePresentationComponent,
+    SneakerDeleteButtonComponent,
+    SneakerEditButtonComponent,
+    SneakerCollectionComponent,
+    SneakerUserPostComponent,
   ],
   imports: [
     BrowserModule,

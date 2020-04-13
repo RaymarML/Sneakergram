@@ -1,0 +1,17 @@
+.item-top{
+  height: 40vh;
+  background-color: #F4E9E9;
+}
+
+.item-bottom{
+  background-color: #FF214E;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: none;
+}
+
+.img-fit{
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}

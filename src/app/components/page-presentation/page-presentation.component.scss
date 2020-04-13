@@ -1,0 +1,60 @@
+@import "../../variables";
+
+.slide-1{
+  height: 100vh;
+  background-image: url("../../../assets/img/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.slide-2{
+  height: 75vh;
+  background-image: url("../../../assets/img/1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+.slide-3{
+  height: 20vh;
+  background-image: url("../../../assets/img/3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+.content{
+  height: 3vh;
+  background-color: black;
+}
+
+.landing-bg-overlay{
+  height: 100%;
+  background-color: rgba(0,0,0,0.75);
+}
+
+.img-animation-1{
+
+  animation: img-animation-1 2s ease-in-out infinite ;
+}
+
+
+@keyframes img-animation-1 {
+  0%{
+    transform: translateY(10px) rotate(180deg);
+  }
+  50%{
+    transform: translateY(30px) rotate(180deg);
+  }
+  100%{
+    transform: translateY(10px)  rotate(180deg);
+  }
+}
+
+.header-bg{
+  background-color: rgb($main-color, 0.85);
+}
