@@ -17,23 +17,25 @@ import {SneakerMyCollectionsComponent} from "../components/sneaker-my-collection
 import {SneakerCreatePostComponent} from "../components/sneaker-create-post/sneaker-create-post.component";
 import {SneakerCreateCollectionComponent} from "../components/sneaker-create-collection/sneaker-create-collection.component";
 
+import {AuthGuard} from "../guards/auth.guard";
+
 const appRoutes: Routes = [
   { path: '', component: SneakerLandingComponent, children: [
       {path: '', component: SneakerMainComponent},
       {path: 'Access/Login', component: SneakerLoginComponent },
       {path: 'Access/Registration', component: SneakerRegisterComponent },
-      {path: 'Access/Account', component: UserProfileComponent }]
+      {path: 'Access/Account', component: UserProfileComponent, canActivate: [AuthGuard]}]
   },
   { path: 'Content', component: SneakerContentPageComponent, children: [
       {path: 'Trending', component: SneakerPopularComponent},
       {path: 'LatestPosts', component: SneakerPostComponent},
       {path: 'Favoritos', component: SneakerFavoritesComponent},
       {path: 'Search', component: SneakerSearchComponent},
-      {path: 'My-Posts', component: SneakerMyPostsComponent},
-      {path: 'My-Collections', component: SneakerMyCollectionsComponent},
+      {path: 'My-Posts', component: SneakerMyPostsComponent, canActivate: [AuthGuard]},
+      {path: 'My-Collections', component: SneakerMyCollectionsComponent, canActivate: [AuthGuard]},
     ]},
-  {path: 'Content/My-Posts/Create-Post', component: SneakerCreatePostComponent},
-  {path: 'Content/My-Collections/Create-Collection', component: SneakerCreateCollectionComponent},
+  {path: 'Content/My-Posts/Create-Post', component: SneakerCreatePostComponent, canActivate: [AuthGuard]},
+  {path: 'Content/My-Collections/Create-Collection', component: SneakerCreateCollectionComponent, canActivate: [AuthGuard]},
   { path: 'Sneaker/:id', component: SneakerComponent},
 ];
 
