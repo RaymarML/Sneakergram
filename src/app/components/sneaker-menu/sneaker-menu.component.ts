@@ -23,12 +23,15 @@ export class SneakerMenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.authorizationService.currentUser.subscribe(value => {
       this.userlog = value;
 
-      this.likesService.getUserLike(this.sneakerId, this.userlog.uid).subscribe(like => {
-        this.like = like[0]
-      })
+      if (this.userlog != null){
+        this.likesService.getUserLike(this.sneakerId, this.userlog.uid).subscribe(like => {
+          this.like = like[0]
+        });
+      }
     });
   }
 
