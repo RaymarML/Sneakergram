@@ -6,7 +6,6 @@ import {AuthorizationService} from "../../services/authorization.service";
 import {Observable} from "rxjs";
 import {CommentsService} from "../../services/comments.service";
 import {CommentInterface} from "../../model/CommentInterface";
-import {LikesService} from "../../services/likes.service";
 
 @Component({
   selector: 'app-sneaker',
@@ -29,13 +28,11 @@ export class SneakerComponent implements OnInit {
 
   isLog: boolean;
   showForm: boolean = false;
-  likes: number;
 
   constructor(
     private authorizationService: AuthorizationService,
     private sneakersService: SneakersService,
     private commentsService: CommentsService,
-    private likesService: LikesService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -54,7 +51,6 @@ export class SneakerComponent implements OnInit {
       );
 
       this.commentsObservable = this.commentsService.getComments(params['id']);
-      this.likesService.getLikes(params['id']).subscribe(value => this.likes = value.length)
     })
 
     this.authorizationService.currentUser.subscribe(value => {

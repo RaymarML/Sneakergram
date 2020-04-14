@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import {from, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {SneakerInterface} from "../model/SneakerInterface";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
 import {fromPromise} from "rxjs/internal-compatibility";
 import {AuthorizationService} from "./authorization.service";
-import {LikeInterface} from "../model/LikeInterface";
 
 @Injectable({
   providedIn: 'root'
@@ -104,5 +103,13 @@ export class SneakersService {
             return {id, ...content};
           });
         }));
+  }
+
+  updateSneaker(sneaker: SneakerInterface) {
+
+  }
+
+  updateLike(sneaker_id: string, likes: string[] ){
+    return fromPromise(this.sneakerCollection.doc(sneaker_id).update({likes: likes }));
   }
 }

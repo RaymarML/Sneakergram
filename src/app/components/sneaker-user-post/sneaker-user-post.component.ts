@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {SneakerInterface} from "../../model/SneakerInterface";
 import Swal from 'sweetalert2';
 import {SneakersService} from "../../services/sneakers.service";
-import {LikesService} from "../../services/likes.service";
 
 
 declare var $:any;
@@ -15,16 +14,13 @@ declare var $:any;
 export class SneakerUserPostComponent implements OnInit {
 
   @Input() sneaker: SneakerInterface;
-  likes: number = 0;
 
   constructor
   (
     private sneakersService: SneakersService,
-    private likesService: LikesService
   ) { }
 
   ngOnInit(): void {
-    this.likesService.getLikes(this.sneaker.id).subscribe(value => this.likes = value.length)
   }
 
   openPostData(): void{

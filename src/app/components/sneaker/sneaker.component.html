@@ -8,7 +8,7 @@
     </div>
   </ngx-slick-carousel>
 
-  <span class="my-2 d-inline-block">{{likes}}<i class="fas fa-heart text-danger ml-1"></i></span>
+  <span class="my-2 d-inline-block">{{sneaker.likes.length}}<i class="fas fa-heart text-danger ml-1"></i></span>
 
   <div class="mt-2 mb-3">
     <p class="sneaker-title mb-2">{{sneaker.name}}</p>
@@ -16,7 +16,7 @@
     <small>Subido: {{sneaker.created_at | date: 'dd.MM.yyyy'}}</small>
   </div>
 
-  <app-sneaker-menu [shopUrl]="sneaker.shopUrl" [sneakerId]="sneaker.id"></app-sneaker-menu>
+  <app-sneaker-menu [shopUrl]="sneaker.shopUrl" [sneaker]="sneaker"></app-sneaker-menu>
 
   <div class="mt-4">
     <p class="sneaker-title mb-2">Comentarios</p>

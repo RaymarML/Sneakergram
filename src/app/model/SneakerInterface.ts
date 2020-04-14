@@ -5,5 +5,6 @@ export interface SneakerInterface {
   shopUrl: string,
   id?: string,
   uid: string,
-  created_at: number
+  created_at: number,
+  likes: string[]
 }

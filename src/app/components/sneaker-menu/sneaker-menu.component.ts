@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthorizationService} from "../../services/authorization.service";
 import {User} from "firebase";
-import {LikeInterface} from "../../model/LikeInterface";
-import {LikesService} from "../../services/likes.service";
+import {SneakerInterface} from "../../model/SneakerInterface";
+import {SneakersService} from "../../services/sneakers.service";
 
 @Component({
   selector: 'app-sneaker-menu',
@@ -12,40 +12,33 @@ import {LikesService} from "../../services/likes.service";
 export class SneakerMenuComponent implements OnInit {
 
   @Input() shopUrl: string;
-  @Input() sneakerId: string;
+  @Input() sneaker: SneakerInterface;
   userlog: User;
-  like: LikeInterface;
-
+  like: boolean;
 
   constructor(
     private authorizationService: AuthorizationService,
-    private likesService: LikesService
+    private sneakersService: SneakersService
   ) { }
 
   ngOnInit(): void {
-
     this.authorizationService.currentUser.subscribe(value => {
       this.userlog = value;
 
       if (this.userlog != null){
-        this.likesService.getUserLike(this.sneakerId, this.userlog.uid).subscribe(like => {
-          this.like = like[0]
-        });
+        this.like = this.sneaker.likes.includes(this.userlog.uid);
       }
     });
+
   }
 
   toggleLike() {
-    if (this.like){
-      this.likesService.deleteLike(this.sneakerId, this.like.id).subscribe()
-    }else {
-      const likeCreated: LikeInterface = {
-        uid: this.userlog.uid
-      }
-      this.likesService.addLike(this.sneakerId, likeCreated).subscribe(() => {})
+    if(this.like){
+      this.sneaker.likes = this.sneaker.likes.filter( value => value != this.userlog.uid );
+    } else {
+      this.sneaker.likes.push(this.userlog.uid);
     }
-
+    this.like = !this.like;
+    this.sneakersService.updateLike(this.sneaker.id, this.sneaker.likes);
   }
-
-
 }
