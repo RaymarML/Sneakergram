@@ -49,7 +49,9 @@ export class SneakersService {
   }
 
   getFavorites(): Observable<SneakerInterface[]> {
-    return this.angularFirestore.collection('sneaker').snapshotChanges().pipe(
+    return this.angularFirestore.collection('sneaker', ref => {
+      return ref.where('likes', 'array-contains', this.authorizationService.getUid())
+    }).snapshotChanges().pipe(
       map(sneakers => {
         return sneakers.map(sneaker => {
           const content = sneaker.payload.doc.data() as SneakerInterface;
