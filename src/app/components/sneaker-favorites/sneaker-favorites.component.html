@@ -1,12 +1,16 @@
 <div *ngIf="sneakerObservable | async as sneakers; else loading">
   <app-sneaker-page-presentation [title]="title"></app-sneaker-page-presentation>
 
-  <div class="row justify-content-start mt-2">
+  <div class="row justify-content-start mt-2" *ngIf="sneakers.length > 0; else message">
     <app-sneaker-box
       *ngFor="let sneaker of sneakers" [sneaker]="sneaker">
     </app-sneaker-box>
   </div>
 
+  <ng-template #message>
+    <app-info-message [message]="'Prueba a darle me gusta a un sneaker.'">
+    </app-info-message>
+  </ng-template>
 </div>
 
 <ng-template #loading>

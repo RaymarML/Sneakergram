@@ -22,6 +22,21 @@ export class SneakersService {
     this.uid = this.authorizationService.getUid();
   }
 
+  getMostPopular(): Observable<SneakerInterface[]> {
+    return this.angularFirestore
+      .collection('sneaker',
+          ref => ref.orderBy('created_at', 'desc').limit(8))
+      .snapshotChanges().pipe(
+        map(sneakers => {
+          return sneakers.map(sneaker => {
+            const content = sneaker.payload.doc.data() as SneakerInterface;
+            const id = sneaker.payload.doc.id;
+            return {id, ...content};
+          });
+        })
+      )
+  }
+
   getAllSneakers(): Observable<SneakerInterface[]> {
     return this.sneakerCollection.snapshotChanges().pipe(
       map(sneakers => {

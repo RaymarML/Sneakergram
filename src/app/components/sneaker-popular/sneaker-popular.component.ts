@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
 import {SneakersService} from "../../services/sneakers.service";
 import {SneakerInterface} from "../../model/SneakerInterface";
 
@@ -10,13 +9,17 @@ import {SneakerInterface} from "../../model/SneakerInterface";
 })
 export class SneakerPopularComponent implements OnInit {
 
-  sneakerObservable: Observable<SneakerInterface[]>;
+  sneakers: SneakerInterface[];
   title: string = "Más Populares";
 
   constructor(
     private sneakersService: SneakersService
   ) {
-    this.sneakerObservable = this.sneakersService.getAllSneakers();
+    this.sneakersService.getMostPopular().subscribe(value => {
+      this.sneakers = value.sort((a, b) => {
+        return b.likes.length - a.likes.length;
+      })
+    });
   }
 
   ngOnInit(): void {
