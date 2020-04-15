@@ -29,17 +29,23 @@ export class SneakerUserPostComponent implements OnInit {
 
   deleteMyPost(){
     Swal.fire({
-      title:'¿Seguro que quieres eliminar este sneaker?',
+      title:'¿Seguro deseas eliminarlo?',
       text:'No será posible recuperarla',
       icon:'warning',
       showCancelButton: true,
       confirmButtonColor: '#FF214E',
       confirmButtonText:'Borrar',
-      cancelButtonColor: '#FF214E',
+      cancelButtonColor: '#000',
+      cancelButtonText: 'Cancelar'
     }).then(result => {
       if(result.value){
         this.sneakersService.deleteSneaker(this.sneaker.id)
-        Swal.fire('Borrado')
+        Swal.fire({
+          title: "Eliminado",
+          icon: 'success',
+          timer: 1500,
+          timerProgressBar: true
+        })
       }
     })
   }

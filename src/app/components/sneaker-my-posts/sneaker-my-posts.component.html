@@ -5,9 +5,13 @@
     <button routerLink="Create-Post" class="col-11 px-0 py-2 font-size-14 mt-3">Crear Publicación</button>
   </div>
 
-  <div class="mt-5" >
+  <div class="mt-3" *ngIf="sneakers.length > 0; else message">
     <app-sneaker-user-post *ngFor="let sneaker of sneakers" [sneaker]="sneaker"></app-sneaker-user-post>
   </div>
+
+  <ng-template #message>
+    <app-info-message [message]="'No has creado ningún Sneaker todavía, prueba a crear uno.'"></app-info-message>
+  </ng-template>
 </div>
 
 <ng-template #loading>

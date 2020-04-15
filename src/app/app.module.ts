@@ -47,6 +47,7 @@ import { SneakerEditButtonComponent } from './components/sneaker-edit-button/sne
 import { SneakerCollectionComponent } from './components/sneaker-collection/sneaker-collection.component';
 import { SneakerUserPostComponent } from './components/sneaker-user-post/sneaker-user-post.component';
 import { SneakerEditPostComponent } from './components/sneaker-edit-post/sneaker-edit-post.component';
+import { InfoMessageComponent } from './components/info-message/info-message.component';
 
 
 
@@ -87,6 +88,7 @@ import { SneakerEditPostComponent } from './components/sneaker-edit-post/sneaker
     SneakerCollectionComponent,
     SneakerUserPostComponent,
     SneakerEditPostComponent,
+    InfoMessageComponent,
   ],
   imports: [
     BrowserModule,
