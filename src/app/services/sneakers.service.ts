@@ -107,8 +107,8 @@ export class SneakersService {
         }));
   }
 
-  updateSneaker(sneaker: SneakerInterface) {
-
+  updateSneaker(sneaker: SneakerInterface): Observable<any> {
+    return fromPromise(this.sneakerCollection.doc(sneaker.id).set(sneaker));
   }
 
   updateLike(sneaker_id: string, likes: string[] ){

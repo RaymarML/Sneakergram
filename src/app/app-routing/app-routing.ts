@@ -19,6 +19,7 @@ import {SneakerCreateCollectionComponent} from "../components/sneaker-create-col
 
 import {AuthGuard} from "../guards/auth.guard";
 import {PagePresentationComponent} from "../components/page-presentation/page-presentation.component";
+import {SneakerEditPostComponent} from "../components/sneaker-edit-post/sneaker-edit-post.component";
 
 const appRoutes: Routes = [
   { path: '', component: PagePresentationComponent},
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
       {path: 'My-Collections', component: SneakerMyCollectionsComponent, canActivate: [AuthGuard]},
     ]},
   {path: 'Content/My-Posts/Create-Post', component: SneakerCreatePostComponent, canActivate: [AuthGuard]},
+  {path: 'Content/My-Posts/Edit-Post/:id', component: SneakerEditPostComponent, canActivate: [AuthGuard]},
   {path: 'Content/My-Collections/Create-Collection', component: SneakerCreateCollectionComponent, canActivate: [AuthGuard]},
   { path: 'Sneaker/:id', component: SneakerComponent},
 ];

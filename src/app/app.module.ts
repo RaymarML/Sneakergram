@@ -46,6 +46,8 @@ import { SneakerDeleteButtonComponent } from './components/sneaker-delete-button
 import { SneakerEditButtonComponent } from './components/sneaker-edit-button/sneaker-edit-button.component';
 import { SneakerCollectionComponent } from './components/sneaker-collection/sneaker-collection.component';
 import { SneakerUserPostComponent } from './components/sneaker-user-post/sneaker-user-post.component';
+import { SneakerEditPostComponent } from './components/sneaker-edit-post/sneaker-edit-post.component';
+
 
 
 @NgModule({
@@ -84,6 +86,7 @@ import { SneakerUserPostComponent } from './components/sneaker-user-post/sneaker
     SneakerEditButtonComponent,
     SneakerCollectionComponent,
     SneakerUserPostComponent,
+    SneakerEditPostComponent,
   ],
   imports: [
     BrowserModule,
