@@ -1,7 +1,7 @@
 <div class="side-menu-bg h-100" >
   <div class="row h-100 mx-0 justify-content-end align-content-center sidebar">
     <div class="col-12 text-center pt-3" (click)="openNav()">
-      <a routerLink="">Inicio</a>
+      <a *ngIf="!userLog" routerLink="">Inicio</a>
       <a routerLink="/Content/LatestPosts">Últimos Posts</a>
       <a routerLink="/Content/Trending" >Más Popular</a>
       <a routerLink="/Content/Search" >Buscar</a>
