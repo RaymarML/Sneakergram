@@ -3,8 +3,9 @@ import {SneakersService} from "../../services/sneakers.service";
 import {fromEvent, Observable} from "rxjs";
 import {SneakerInterface} from "../../model/SneakerInterface";
 import {debounceTime, distinctUntilChanged, filter, map, switchMap} from "rxjs/operators";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {SelectableBehaviourService} from "../../services/selectable-behaviour.service";
+import {Location} from "@angular/common";
 declare var $:any;
 
 @Component({
@@ -22,7 +23,7 @@ export class SneakerSearchComponent implements OnInit {
     private sneakersService: SneakersService,
     private selectableBehaviour : SelectableBehaviourService,
     private activatedRoute: ActivatedRoute,
-    private route: Router
+    private location: Location
   ) {
 
   }
@@ -60,7 +61,7 @@ export class SneakerSearchComponent implements OnInit {
 
   sendToCollection(){
     this.selectableBehaviour.selectSneakerForCollection.next(this.selectedSneakers);
-    this.route.navigate(['Content/My-Collections/Create-Collection']);
+    this.location.back();
   }
 
 }

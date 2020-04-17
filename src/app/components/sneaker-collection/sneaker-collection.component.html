@@ -1,6 +1,6 @@
 <div  class="p-0 my-5 ">
   <div *ngIf="collectionActions" class="row mx-0 justify-content-end">
-    <app-sneaker-edit-button></app-sneaker-edit-button>
+    <app-sneaker-edit-button (click)="editCollection()"></app-sneaker-edit-button>
     <app-sneaker-delete-button (click)="deleteCollection()" class="ml-3"></app-sneaker-delete-button>
   </div>
   <div class="row mx-0 mt-1 justify-content-center">

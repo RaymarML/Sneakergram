@@ -1,0 +1,34 @@
+<div *ngIf="sneakerCollection; else loading" class="container-fluid">
+  <app-sneaker-subheader
+    [title]="title"
+  ></app-sneaker-subheader>
+  <form class="col-12" [formGroup]="collectionForm" (ngSubmit)="editCollection(collectionForm)">
+    <div class="row mt-2">
+      <input id="nameInput" class="col-12 font-size-16 py-3" type="text" placeholder="Nombre" formControlName="name">
+      <small class="form-text text-muted">Máximo 60 caracteres.</small>
+    </div>
+    <div class="row align-items-center mt-2">
+      <button (click)="searchSneakersForCollection()" class="col-12 sneaker-font font-size-14 px-0 py-2 ">Elige tus post</button>
+    </div>
+    <div class="row justify-content-start mt-2" *ngIf="sneakersIds.length > 0; else notSneakerAddedToCollection">
+      <app-sneaker-collecion-item
+        *ngFor="let sneakerId of sneakersIds" [sneakerId]="sneakerId">
+      </app-sneaker-collecion-item>
+    </div>
+    <ng-template class="row mx-0  text-white py-2 px-1 text-center " #notSneakerAddedToCollection>
+      <p class="col-12 my-3 text-center">
+        No se han añadido sneakers.
+      </p>
+    </ng-template>
+    <div class="row mt-3">
+      <button class="col-12 sneaker-font font-size-14 px-0 py-2"
+              [disabled]="!collectionForm.valid"
+              [class.disabled]="!collectionForm.valid"
+      >Editar</button>
+    </div>
+  </form>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

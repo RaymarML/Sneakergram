@@ -22,6 +22,7 @@ import {PagePresentationComponent} from "../components/page-presentation/page-pr
 import {SneakerLastCollectionsComponent} from "../components/sneaker-last-collections/sneaker-last-collections.component";
 import {SneakerFavoriteCollectionsComponent} from "../components/sneaker-favorite-collections/sneaker-favorite-collections.component";
 import {SneakerCollectionInfoComponent} from "../components/sneaker-collection-info/sneaker-collection-info.component";
+import {SneakerEditCollectionComponent} from "../components/sneaker-edit-collection/sneaker-edit-collection.component";
 
 const appRoutes: Routes = [
   { path: '', component: PagePresentationComponent},
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     ]},
   {path: 'Content/My-Posts/Create-Post', component: SneakerCreatePostComponent, canActivate: [AuthGuard]},
   {path: 'Content/My-Collections/Create-Collection', component: SneakerCreateCollectionComponent, canActivate: [AuthGuard]},
+  {path: 'Content/My-Collections/Edit-Collection/:id', component: SneakerEditCollectionComponent, canActivate: [AuthGuard]},
   {path: 'CollectionInfo/:id', component: SneakerCollectionInfoComponent, canActivate: [AuthGuard]},
   {path: 'Sneaker/:id', component: SneakerComponent},
 ];

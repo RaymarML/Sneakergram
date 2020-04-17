@@ -52,6 +52,7 @@ import {SneakerCollecionItemComponent} from "./components/sneaker-collection-ite
 import { SneakerFavoriteCollectionsComponent } from './components/sneaker-favorite-collections/sneaker-favorite-collections.component';
 import { SneakerLastCollectionsComponent } from './components/sneaker-last-collections/sneaker-last-collections.component';
 import { SneakerCollectionInfoComponent } from './components/sneaker-collection-info/sneaker-collection-info.component';
+import { SneakerEditCollectionComponent } from './components/sneaker-edit-collection/sneaker-edit-collection.component';
 
 
 
@@ -96,7 +97,8 @@ import { SneakerCollectionInfoComponent } from './components/sneaker-collection-
     SneakerCollecionItemComponent,
     SneakerFavoriteCollectionsComponent,
     SneakerLastCollectionsComponent,
-    SneakerCollectionInfoComponent
+    SneakerCollectionInfoComponent,
+    SneakerEditCollectionComponent
   ],
   imports: [
     BrowserModule,

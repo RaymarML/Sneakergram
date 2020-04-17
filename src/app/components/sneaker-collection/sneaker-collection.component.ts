@@ -28,7 +28,7 @@ export class SneakerCollectionComponent implements OnInit {
   constructor(
     private sneakerService : SneakersService,
     private collectionService : SneakerCollectionService,
-    private route : Router
+    private route : Router,
   ) {
 
   }
@@ -66,5 +66,9 @@ export class SneakerCollectionComponent implements OnInit {
     if(!this.collectionActions){
       this.route.navigate(['CollectionInfo/', this.collection.id]);
     }
+  }
+
+  editCollection() : void {
+    this.route.navigate(['Content/My-Collections/Edit-Collection', this.collection.id]);
   }
 }
