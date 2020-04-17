@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {SneakerInterface} from "../model/SneakerInterface";
-import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
+import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from "@angular/fire/firestore";
 import {fromPromise} from "rxjs/internal-compatibility";
 import {AuthorizationService} from "./authorization.service";
 
@@ -13,6 +13,13 @@ export class SneakersService {
 
   private sneakerCollection : AngularFirestoreCollection<SneakerInterface>;
   private uid: string;
+  private map = map((sneakers: DocumentChangeAction<unknown>[]) => {
+    return sneakers.map( (sneaker:DocumentChangeAction<unknown>) => {
+      const content = sneaker.payload.doc.data() as SneakerInterface;
+      const id = sneaker.payload.doc.id;
+      return {id, ...content};
+    });
+  });
 
   constructor(
     private angularFirestore: AngularFirestore,
@@ -26,55 +33,19 @@ export class SneakersService {
     return this.angularFirestore
       .collection('sneaker',
           ref => ref.orderBy('created_at', 'desc').limit(8))
-      .snapshotChanges().pipe(
-        map(sneakers => {
-          return sneakers.map(sneaker => {
-            const content = sneaker.payload.doc.data() as SneakerInterface;
-            const id = sneaker.payload.doc.id;
-            return {id, ...content};
-          });
-        })
-      )
-  }
-
-  getAllSneakers(): Observable<SneakerInterface[]> {
-    return this.sneakerCollection.snapshotChanges().pipe(
-      map(sneakers => {
-        return sneakers.map(sneaker => {
-          const content = sneaker.payload.doc.data() as SneakerInterface;
-          const id = sneaker.payload.doc.id;
-          return {id, ...content};
-        });
-      })
-    )
+      .snapshotChanges().pipe(this.map);
   }
 
   getLastPosts(): Observable<SneakerInterface[]> {
     return this.angularFirestore
       .collection('sneaker', ref => ref.orderBy('created_at', 'desc'))
-      .snapshotChanges().pipe(
-      map(sneakers => {
-        return sneakers.map(sneaker => {
-          const content = sneaker.payload.doc.data() as SneakerInterface;
-          const id = sneaker.payload.doc.id;
-          return {id, ...content};
-        });
-      })
-    )
+      .snapshotChanges().pipe(this.map);
   }
 
   getFavorites(): Observable<SneakerInterface[]> {
     return this.angularFirestore.collection('sneaker', ref => {
       return ref.where('likes', 'array-contains', this.authorizationService.getUid())
-    }).snapshotChanges().pipe(
-      map(sneakers => {
-        return sneakers.map(sneaker => {
-          const content = sneaker.payload.doc.data() as SneakerInterface;
-          const id = sneaker.payload.doc.id;
-          return {id, ...content};
-        });
-      })
-    )
+    }).snapshotChanges().pipe(this.map);
   }
 
   getSneaker(id:string): Observable<SneakerInterface> {
@@ -90,14 +61,7 @@ export class SneakersService {
   searchSneaker(search: string): Observable<SneakerInterface[]> {
     return this.angularFirestore.collection('sneaker',
         ref => ref.orderBy('name').startAt(search).endAt(search + "\uf8ff"))
-      .snapshotChanges().pipe(
-      map(sneakers => {
-        return sneakers.map(sneaker => {
-          const content = sneaker.payload.doc.data() as SneakerInterface;
-          const id = sneaker.payload.doc.id;
-          return {id, ...content};
-        });
-      }));
+      .snapshotChanges().pipe(this.map);
   }
 
   deleteSneaker(id: string): Observable<any>{
@@ -127,6 +91,6 @@ export class SneakersService {
   }
 
   updateLike(sneaker_id: string, likes: string[] ){
-    return fromPromise(this.sneakerCollection.doc(sneaker_id).update({likes: likes }));
+    return fromPromise(this.sneakerCollection.doc(sneaker_id).update({likes: likes}));
   }
 }

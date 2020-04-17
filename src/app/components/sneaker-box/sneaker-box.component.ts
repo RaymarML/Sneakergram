@@ -10,9 +10,8 @@ import {SneakerInterface} from "../../model/SneakerInterface";
 export class SneakerBoxComponent implements OnInit {
 
   @Input() sneaker: SneakerInterface;
-
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
 }
