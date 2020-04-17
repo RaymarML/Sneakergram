@@ -1,6 +1,11 @@
 @import "variables";
 
-app-sneaker-side-menu{
+.main-frame {
+  min-height: calc(100vh);
+}
+
+
+app-sneaker-side-menu {
   top: 8vh;
   left: 100%;
   width: 100vw;

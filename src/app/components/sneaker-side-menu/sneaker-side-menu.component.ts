@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from "../../services/authorization.service";
-import {Router} from "@angular/router";
 declare var $:any;
 
 @Component({
@@ -27,7 +26,16 @@ export class SneakerSideMenuComponent implements OnInit {
   }
 
   openNav(){
-    $("app-sneaker-side-menu").toggleClass("open-side-nav");
+    const querySideMenu = $("app-sneaker-side-menu");
+    const mainFrame = $("body");
+
+    if (querySideMenu.hasClass("open-side-nav")){
+      //mainFrame.addClass("overflow-hidden");
+      querySideMenu.removeClass("open-side-nav");
+    } else {
+      //mainFrame.removeClass("overflow-hidden");
+      querySideMenu.addClass("open-side-nav");
+    }
   }
 
   logout() {
