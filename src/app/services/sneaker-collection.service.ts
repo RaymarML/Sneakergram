@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firestore";
+import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from "@angular/fire/firestore";
 import {AuthorizationService} from "./authorization.service";
 import {CollectionInterface} from "../model/CollectionInterface";
 import {fromPromise} from "rxjs/internal-compatibility";
@@ -14,6 +14,14 @@ export class SneakerCollectionService {
 
   private sneakerCollectionCollection : AngularFirestoreCollection<CollectionInterface>;
   private uid: string;
+  private map = map((collections:DocumentChangeAction<unknown>[]) => {
+    return collections.map(collection => {
+      const content = collection.payload.doc.data() as CollectionInterface;
+      const id = collection.payload.doc.id;
+      return {id, ...content};
+    });
+  })
+
 
   constructor(
     private angularFirestore: AngularFirestore,
@@ -31,14 +39,7 @@ export class SneakerCollectionService {
   getUserCollections(uid: string): Observable<CollectionInterface[]> {
     return this.angularFirestore.collection('sneakerCollection',
       ref => ref.orderBy('name').where("uid", "==", uid))
-      .snapshotChanges().pipe(
-        map(collections => {
-          return collections.map(collection => {
-            const content = collection.payload.doc.data() as CollectionInterface;
-            const id = collection.payload.doc.id;
-            return {id, ...content};
-          });
-        }));
+      .snapshotChanges().pipe(this.map);
   }
 
   deleteCollection(id: string): Observable<any>{
@@ -48,15 +49,7 @@ export class SneakerCollectionService {
   getCollections(): Observable<CollectionInterface[]> {
     return this.angularFirestore
       .collection('sneakerCollection', ref => ref.orderBy('created_at', 'desc'))
-      .snapshotChanges().pipe(
-        map(collections => {
-          return collections.map(collection => {
-            const content = collection.payload.doc.data() as CollectionInterface;
-            const id = collection.payload.doc.id;
-            return {id, ...content};
-          });
-        })
-      )
+      .snapshotChanges().pipe(this.map);
   }
 
   getCollection(id:string): Observable<CollectionInterface> {
@@ -74,15 +67,7 @@ export class SneakerCollectionService {
       .collection('sneakerCollection', ref => {
         return ref.where('likes', 'array-contains', this.authorizationService.getUid())
       })
-      .snapshotChanges().pipe(
-        map(collections => {
-          return collections.map(collection => {
-            const content = collection.payload.doc.data() as CollectionInterface;
-            const id = collection.payload.doc.id;
-            return {id, ...content};
-          });
-        })
-      )
+      .snapshotChanges().pipe(this.map);
   }
 
   updateLikes(collection_id: string, likes: string[] ){
