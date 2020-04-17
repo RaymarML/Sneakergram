@@ -48,6 +48,10 @@ import { SneakerCollectionComponent } from './components/sneaker-collection/snea
 import { SneakerUserPostComponent } from './components/sneaker-user-post/sneaker-user-post.component';
 import { SneakerEditPostComponent } from './components/sneaker-edit-post/sneaker-edit-post.component';
 import { InfoMessageComponent } from './components/info-message/info-message.component';
+import {SneakerCollecionItemComponent} from "./components/sneaker-collection-item/sneaker-collection-item.component";
+import { SneakerFavoriteCollectionsComponent } from './components/sneaker-favorite-collections/sneaker-favorite-collections.component';
+import { SneakerLastCollectionsComponent } from './components/sneaker-last-collections/sneaker-last-collections.component';
+import { SneakerCollectionInfoComponent } from './components/sneaker-collection-info/sneaker-collection-info.component';
 
 
 
@@ -89,6 +93,10 @@ import { InfoMessageComponent } from './components/info-message/info-message.com
     SneakerUserPostComponent,
     SneakerEditPostComponent,
     InfoMessageComponent,
+    SneakerCollecionItemComponent,
+    SneakerFavoriteCollectionsComponent,
+    SneakerLastCollectionsComponent,
+    SneakerCollectionInfoComponent
   ],
   imports: [
     BrowserModule,

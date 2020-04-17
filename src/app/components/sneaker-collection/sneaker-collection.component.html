@@ -1,27 +1,20 @@
-<div class="container-fluid p-0">
-  <div class="row mx-0 justify-content-end">
+<div  class="p-0 my-5 ">
+  <div *ngIf="collectionActions" class="row mx-0 justify-content-end">
     <app-sneaker-edit-button></app-sneaker-edit-button>
-    <app-sneaker-delete-button class="ml-3"></app-sneaker-delete-button>
+    <app-sneaker-delete-button (click)="deleteCollection()" class="ml-3"></app-sneaker-delete-button>
   </div>
   <div class="row mx-0 mt-1 justify-content-center">
-    <p class="col-12 text-center font-size-24 sneaker-font">NIKE Supreme</p>
-    <span class="col-8 mt-2" style="height: 1px; background-color: black"></span>
+    <p class="col-12 text-center font-size-24 sneaker-font">{{collection.name}}</p>
+    <span class="col-8 my-2" style="height: 1px; background-color: black"></span>
   </div>
-  <ngx-slick-carousel class="carousel position-relative"
-                      #slickModal="slick-carousel"
+  <ngx-slick-carousel class="row mx-0 carousel"
                       [config]="slideConfig">
-
-
-    <div ngxSlickItem class="slide ">
-      <img src="../../../assets/img/dummy.jpg" alt="" class="w-100">
-    </div>
-    <div ngxSlickItem class="slide">
-      <img src="../../../assets/img/dummy.jpg" alt="" class="w-100">
-    </div>
-    <div ngxSlickItem class="slide">
-      <img src="../../../assets/img/dummy.jpg" alt="" class="w-100">
+    <div ngxSlickItem *ngFor="let sneakerImg of sneakersImgs" class="col-10 carousel-slide text-center">
+      <img src="{{ sneakerImg }}" alt="" class="img-carousel">
     </div>
   </ngx-slick-carousel>
+  <button *ngIf="!collectionActions" (click)="showCollection()" class="col-12 py-2 px-0 mt-3 mx-0">Ver Sneakers</button>
+  <!--TODO-->
   <div class="mx-0 pt-2 row justify-content-center">
     <p class="font-size-12 sneaker-font">A 20 usuarios le ha gustado</p>
   </div>

@@ -19,7 +19,9 @@ import {SneakerCreateCollectionComponent} from "../components/sneaker-create-col
 
 import {AuthGuard} from "../guards/auth.guard";
 import {PagePresentationComponent} from "../components/page-presentation/page-presentation.component";
-import {SneakerEditPostComponent} from "../components/sneaker-edit-post/sneaker-edit-post.component";
+import {SneakerLastCollectionsComponent} from "../components/sneaker-last-collections/sneaker-last-collections.component";
+import {SneakerFavoriteCollectionsComponent} from "../components/sneaker-favorite-collections/sneaker-favorite-collections.component";
+import {SneakerCollectionInfoComponent} from "../components/sneaker-collection-info/sneaker-collection-info.component";
 
 const appRoutes: Routes = [
   { path: '', component: PagePresentationComponent},
@@ -31,16 +33,18 @@ const appRoutes: Routes = [
   },
   { path: 'Content', component: SneakerContentPageComponent, children: [
       {path: 'Trending', component: SneakerPopularComponent},
+      {path: 'LatestCollection', component: SneakerLastCollectionsComponent},
       {path: 'LatestPosts', component: SneakerPostComponent},
       {path: 'Favoritos', component: SneakerFavoritesComponent},
-      {path: 'Search', component: SneakerSearchComponent},
+      {path: 'Search/:selectOption', component: SneakerSearchComponent},
       {path: 'My-Posts', component: SneakerMyPostsComponent, canActivate: [AuthGuard]},
       {path: 'My-Collections', component: SneakerMyCollectionsComponent, canActivate: [AuthGuard]},
+      {path: 'Favorite-Collections', component: SneakerFavoriteCollectionsComponent, canActivate: [AuthGuard]},
     ]},
   {path: 'Content/My-Posts/Create-Post', component: SneakerCreatePostComponent, canActivate: [AuthGuard]},
-  {path: 'Content/My-Posts/Edit-Post/:id', component: SneakerEditPostComponent, canActivate: [AuthGuard]},
   {path: 'Content/My-Collections/Create-Collection', component: SneakerCreateCollectionComponent, canActivate: [AuthGuard]},
-  { path: 'Sneaker/:id', component: SneakerComponent},
+  {path: 'CollectionInfo/:id', component: SneakerCollectionInfoComponent, canActivate: [AuthGuard]},
+  {path: 'Sneaker/:id', component: SneakerComponent},
 ];
 
 @NgModule({
