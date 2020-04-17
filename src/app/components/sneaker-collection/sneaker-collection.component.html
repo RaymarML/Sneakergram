@@ -14,8 +14,7 @@
     </div>
   </ngx-slick-carousel>
   <button *ngIf="!collectionActions" (click)="showCollection()" class="col-12 py-2 px-0 mt-3 mx-0">Ver Sneakers</button>
-  <!--TODO-->
   <div class="mx-0 pt-2 row justify-content-center">
-    <p class="font-size-12 sneaker-font">A 20 usuarios le ha gustado</p>
+    <p class="font-size-12 sneaker-font">A {{collection.likes.length}} usuarios le ha gustado <i class="fa fa-heart text-danger"></i></p>
   </div>
 </div>
