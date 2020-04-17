@@ -1,6 +1,11 @@
-
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+import {SelectableBehaviourService} from "../../services/selectable-behaviour.service";
+import {CollectionInterface} from "../../model/CollectionInterface";
+import {SneakerCollectionService} from "../../services/sneaker-collection.service";
+import {SneakerInterface} from "../../model/SneakerInterface";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+declare var $:any;
 
 @Component({
   selector: 'app-sneaker-create-collection',
@@ -10,19 +15,68 @@ import * as $ from 'jquery';
 export class SneakerCreateCollectionComponent implements OnInit {
 
   title: string = "Crear colección";
-  numberOfPostToAdd: number = 1;
-  constructor() { }
+  collectionForm: FormGroup;
+  sneakersIds: string[] = [];
+  sneaker: SneakerInterface;
+  private sneakerCollection: CollectionInterface;
 
-  ngOnInit(): void {
+  constructor(
+    private sneakerCollectionService : SneakerCollectionService,
+    private selectableBehaviour : SelectableBehaviourService,
+    private router: Router
+  ) {
+    this.collectionForm = new FormGroup({
+      name: new FormControl("", [Validators.required, Validators.maxLength(60)])
+    });
   }
 
-  addPost(): void {
-    let lastPostIndex = this.numberOfPostToAdd;
-    this.numberOfPostToAdd++;
-    $("#post" + lastPostIndex).after(
-      "<div id=\"post" + this.numberOfPostToAdd + "\" class=\"row mt-2\">\n" +
-      "      <input class=\"col-12 font-size-16 py-3\" type=\"email\" placeholder=\"Elige un post\">\n" +
-      "    </div>"
+  ngOnInit(): void {
+    this.sneakersIds = [];
+    this.sneakersIds = this.selectableBehaviour.selectSneakerForCollection.getValue();
+    this.selectableBehaviour.deleteSneakerForCollection.subscribe(
+      (sneakerId: string) => {
+        $("#" + sneakerId).remove();
+        const index = this.sneakersIds.indexOf(sneakerId, 0);
+        if (index > -1) {
+          this.sneakersIds.splice(index, 1);
+        }
+      }
     );
+  }
+
+
+
+  addCollection(collectionForm: FormGroup): void {
+    if (this.collectionForm.valid) {
+      const {name} = this.collectionForm.value
+      if(this.sneakersIds.length >= 2){
+
+        this.sneakerCollection = {
+          "name": name,
+          "uid": '',
+          "sneakers": this.sneakersIds,
+          "created_at": Date.now(),
+          likes: []
+        }
+        this.sneakerCollectionService.createSneakerCollection(this.sneakerCollection).subscribe(
+          value => {
+            this.router.navigate(["Content/My-Collections/"])
+          }
+        );
+      }else{
+        $("#nameInput").after(
+          "<p class='col-12'>La colleción debe de tener al menos 2 sneakers</p>"
+        );
+      }
+    }else{
+      $("#nameInput").after(
+        "<p class='col-12'>Este campo esta vacío</p>"
+      );
+    }
+  }
+
+  searchSneakersForCollection() : void{
+    this.selectableBehaviour.selectSneakerForCollection.next(this.sneakersIds);
+    this.router.navigate(['/Content/Search', true]);
   }
 }

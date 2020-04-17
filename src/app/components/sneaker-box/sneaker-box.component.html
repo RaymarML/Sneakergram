@@ -1,4 +1,7 @@
-<div class="img-wrapper" [routerLink]="['/Sneaker', sneaker.id]">
-  <img src="{{sneaker.imageUrl[0]}}" alt="">
+<div id="{{sneaker.id}}"
+     [class.selected-sneaker]="selectedCurrent">
+  <div class="img-wrapper"  (click)="sneakerAction()">
+    <img src="{{sneaker.imageUrl[0]}}" alt="">
+  </div>
+  <p  class="sneaker-title mt-2">{{sneaker.name}}</p>
 </div>
-<p class="sneaker-title mt-2">{{sneaker.name}}</p>
