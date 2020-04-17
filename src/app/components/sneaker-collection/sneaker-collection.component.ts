@@ -56,7 +56,12 @@ export class SneakerCollectionComponent implements OnInit {
     }).then(result => {
       if(result.value){
         this.collectionService.deleteCollection(this.collection.id);
-        Swal.fire('Borrado')
+        Swal.fire({
+          title: "Colección Borrada",
+          icon: 'success',
+          timer: 1500,
+          timerProgressBar: true
+        });
       }
     })
 

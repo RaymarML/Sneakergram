@@ -5,6 +5,7 @@ import {SneakerCollectionService} from "../../services/sneaker-collection.servic
 import {SelectableBehaviourService} from "../../services/selectable-behaviour.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SneakersService} from "../../services/sneakers.service";
+import Swal from "sweetalert2";
 declare var $:any;
 
 @Component({
@@ -63,8 +64,14 @@ export class SneakerEditCollectionComponent implements OnInit {
         this.sneakerCollection.sneakers = this.sneakersIds;
         this.sneakerCollection.name = name;
         this.sneakerCollectionService.updateCollection(this.sneakerCollection).subscribe(
-          value => {
-            this.router.navigate(["Content/My-Collections/"])
+          () => {
+            Swal.fire({
+              title: "Colección Editada",
+              icon: 'success',
+              timer: 1500,
+              timerProgressBar: true
+            });
+            this.router.navigate(["Content/My-Collections/"]);
           }
         );
       }else{
