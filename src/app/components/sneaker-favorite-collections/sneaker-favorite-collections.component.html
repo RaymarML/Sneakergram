@@ -1,11 +1,14 @@
 <div *ngIf="collectionsObservable | async as collections; else loading">
   <app-sneaker-page-presentation [title]="title"></app-sneaker-page-presentation>
 
-  <div class="mt-2">
-    <app-sneaker-collection
-      *ngFor="let collection of collections" [collection]="collection" [collectionActions]="false">
-    </app-sneaker-collection>
+  <div class="mt-2" *ngIf="collections.length > 0; else message" >
+    <app-sneaker-collection *ngFor="let collection of collections" [collection]="collection" [collectionActions]=false></app-sneaker-collection>
   </div>
+
+  <ng-template #message>
+    <app-info-message [message]="'Prueba a crear una darle me gusta a una colección.'">
+    </app-info-message>
+  </ng-template>
 
 </div>
 

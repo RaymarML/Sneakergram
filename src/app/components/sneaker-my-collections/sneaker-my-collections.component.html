@@ -1,13 +1,19 @@
 <div *ngIf="sneakerCollectionObservable | async as collections; else loading">
   <app-sneaker-page-presentation [title]="title"></app-sneaker-page-presentation>
 
-  <div class="row mx-0 justify-content-center my-3">
-    <button routerLink="Create-Collection" class="col-9 px-0 py-2 font-size-14 mt-3">Crear Colección</button>
+  <div class="row mx-0 justify-content-center mt-3">
+    <button routerLink="Create-Collection" class="col-9 px-0 py-2 font-size-14">Crear Colección</button>
   </div>
 
-  <div class="mt-5" >
+  <div class="mt-3" *ngIf="collections.length > 0; else message" >
     <app-sneaker-collection *ngFor="let collection of collections" [collection]="collection" [collectionActions]="collectionActions"></app-sneaker-collection>
   </div>
+
+  <ng-template #message>
+    <app-info-message [message]="'Prueba a crear una colección.'">
+    </app-info-message>
+  </ng-template>
+
 </div>
 
 <ng-template #loading>
