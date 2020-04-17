@@ -67,7 +67,7 @@ export class SneakerCreatePostComponent implements OnInit {
     this.sneaker.imageUrl.push(url);
     if (this.sneaker.imageUrl.length == this.fileList.length){
       this.sneakersService.createSneaker(this.sneaker).subscribe( value => {
-        this.router.navigate(["Content", "LatestPosts"])
+        this.router.navigate(["Sneaker", value.id])
       })
     }
   }
