@@ -26,15 +26,19 @@ export class SneakerSideMenuComponent implements OnInit {
   }
 
   openNav(){
-    const querySideMenu = $("app-sneaker-side-menu");
-    const mainFrame = $("body");
+    const sideMenu = $("app-sneaker-side-menu");
+    const mainFrame = $(".main-frame");
 
-    if (querySideMenu.hasClass("open-side-nav")){
-      //mainFrame.addClass("overflow-hidden");
-      querySideMenu.removeClass("open-side-nav");
-    } else {
-      //mainFrame.removeClass("overflow-hidden");
-      querySideMenu.addClass("open-side-nav");
+    if(sideMenu.hasClass("open-side-nav")){
+      sideMenu.removeClass("open-side-nav");
+      mainFrame
+        .css({"height":"100%"})
+        .css({"overflow-y":"scroll"});
+    }else {
+      sideMenu.addClass("open-side-nav");
+      mainFrame
+        .css({"height":"100vh"})
+        .css({"overflow-y":"hidden"});
     }
   }
 

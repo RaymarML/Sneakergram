@@ -15,10 +15,10 @@ declare var $:any;
 })
 export class SneakerEditCollectionComponent implements OnInit {
   title: string = "Editar colleción";
-  private collectionForm: FormGroup;
-  private sneakersIds: string[] = [];
-  private sneakerCollection: CollectionInterface;
-  private name;
+  collectionForm: FormGroup;
+  sneakersIds: string[] = [];
+  sneakerCollection: CollectionInterface;
+  name;
 
   constructor(
     private sneakerCollectionService : SneakerCollectionService,

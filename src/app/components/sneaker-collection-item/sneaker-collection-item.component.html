@@ -1,9 +1,9 @@
 <div id="{{sneaker.id}}" class="col-12 item-height my-2" *ngIf="sneaker">
-  <div class="row h-100 mx-0 align-items-center justify-content-between">
+  <div class="row h-100 mx-0 align-items-center justify-content-around">
     <div class="col-6 h-100 align-items-center">
-      <img class="img-fluid" src="{{sneaker.imageUrl}}" alt="">
+      <img class="img-fluid w-100" src="{{sneaker.imageUrl[0]}}" alt="{{sneaker.name}}">
     </div>
-    <p>{{sneaker.name}}</p>
+    <p class="font-size-14 text-capitalize col-2">{{sneaker.name}}</p>
     <app-sneaker-delete-button
       (click)="removeItemFromCollection(sneaker.id)">
     </app-sneaker-delete-button>

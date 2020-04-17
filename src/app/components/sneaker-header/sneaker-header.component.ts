@@ -14,6 +14,19 @@ export class SneakerHeaderComponent implements OnInit {
   }
 
   openNav(){
-    $("app-sneaker-side-menu").toggleClass("open-side-nav");
+    const sideMenu = $("app-sneaker-side-menu");
+    const mainFrame = $(".main-frame");
+
+    if(sideMenu.hasClass("open-side-nav")){
+      sideMenu.removeClass("open-side-nav");
+      mainFrame
+        .css({"height":"100%"})
+        .css({"overflow-y":"scroll"});
+    }else {
+      sideMenu.addClass("open-side-nav");
+      mainFrame
+        .css({"height":"100vh"})
+        .css({"overflow-y":"hidden"});
+    }
   }
 }
