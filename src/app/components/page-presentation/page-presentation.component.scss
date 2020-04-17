@@ -10,7 +10,7 @@
 }
 
 .slide-2{
-  height: 75vh;
+  height: 100vh;
   background-image: url("../../../assets/img/1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -58,3 +58,20 @@
 .header-bg{
   background-color: rgb($main-color, 0.85);
 }
+
+.carousel{
+  height: 30vh;
+
+  .slide {
+    height: 30vh !important;
+  }
+
+  .img-carousel{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+}
+
+

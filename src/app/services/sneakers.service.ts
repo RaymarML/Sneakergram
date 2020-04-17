@@ -36,9 +36,9 @@ export class SneakersService {
       .snapshotChanges().pipe(this.map);
   }
 
-  getLastPosts(): Observable<SneakerInterface[]> {
+  getLastPosts(limit: number = 100): Observable<SneakerInterface[]> {
     return this.angularFirestore
-      .collection('sneaker', ref => ref.orderBy('created_at', 'desc'))
+      .collection('sneaker', ref => ref.orderBy('created_at', 'desc').limit(limit))
       .snapshotChanges().pipe(this.map);
   }
 

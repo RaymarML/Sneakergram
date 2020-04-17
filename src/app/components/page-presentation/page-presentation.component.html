@@ -8,7 +8,7 @@
         <h2 class="mt-4 sneaker-font font-size-20 ">
           <p class="text-animation">
             Start to share your<br>
-            sneaker taste
+            Sneaker Taste
           </p>
         </h2>
         <div class="col-12 text-center">
@@ -22,21 +22,25 @@
 </div>
 <div class="row mx-0 slide-2">
   <div class="col-12 landing-bg-overlay">
-    <div class="row mx-0  h-100 align-content-center">
-      <div class="col-12 header-bg py-3">
-        <ngx-slick-carousel class="carousel position-relative"
-                            #slickModal="slick-carousel">
-          <div ngxSlickItem class="slide ">
-            <img src="../../../assets/img/Group30.png" alt="" class="w-100">
-          </div>
-          <div ngxSlickItem class="slide">
-            <img src="../../../assets/img/Group30.png" alt="" class="w-100">
-          </div>
-          <div ngxSlickItem class="slide">
-            <img src="../../../assets/img/Group30.png" alt="" class="w-100">
+    <div class="row mx-0  h-100 align-content-around">
+      <div class="col-12 header-bg py-3" *ngIf="popularSneakers">
+        <h2 class="text-center text-white mb-2">Artículos más populares</h2>
+        <ngx-slick-carousel class="carousel position-relative" #slickModal="slick-carousel">
+          <div ngxSlickItem class="slide" *ngFor="let sneaker of popularSneakers">
+            <img src="{{sneaker.imageUrl[0]}}" alt="{{sneaker.name}}" class="img-carousel">
           </div>
         </ngx-slick-carousel>
       </div>
+
+      <div class="col-12 header-bg py-3" *ngIf="lastSneakers">
+        <h2 class="text-center text-white mb-2">Últimos Artículos</h2>
+        <ngx-slick-carousel class="carousel position-relative" #slickModal="slick-carousel">
+          <div ngxSlickItem class="slide" *ngFor="let sneaker of lastSneakers">
+            <img src="{{sneaker.imageUrl[0]}}" alt="{{sneaker.name}}" class="img-carousel">
+          </div>
+        </ngx-slick-carousel>
+      </div>
+
     </div>
   </div>
 </div>
