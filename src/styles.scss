@@ -45,6 +45,18 @@ button, button:active, button:focus, button:visited, .button{
 
 }
 
+.button {
+  background-color: $sneaker-button;
+  padding: 5px;
+  border: 1px solid white;
+
+  .selected {
+    color: red;
+  }
+
+}
+
+
 .disabled {
   background-color: darken($sneaker-button, 20);
 }

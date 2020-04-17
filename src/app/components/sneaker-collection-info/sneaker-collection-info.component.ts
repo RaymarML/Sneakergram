@@ -14,10 +14,11 @@ import {User} from "firebase";
 })
 export class SneakerCollectionInfoComponent implements OnInit {
 
-  title:string = "Sneakers de ";
+  title:string = "";
   sneakers : SneakerInterface[] = [];
-  collectionId : string = "";
+  collection: CollectionInterface;
   userLog : User;
+  like: boolean;
 
   constructor(
     private activatedRoute : ActivatedRoute,
@@ -28,22 +29,40 @@ export class SneakerCollectionInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.collectionServive.getCollection(params['id']).subscribe(
-        (collection: CollectionInterface) => {
-          this.collectionId = params['id'];
-          this.title += collection.name;
-          for (let i = 0; i < collection.sneakers.length; i++){
-            this.sneakerService.getSneaker(collection.sneakers[i]).subscribe(
-              (sneaker: SneakerInterface) => {
-                this.sneakers.push(sneaker);
-              }
-            );
-          }
+      this.collectionServive.getCollection(params['id']).subscribe((collection: CollectionInterface) => {
+        this.sneakers = [];
+        this.title = `Sneakers de ${collection.name}`;
+        this.collection = collection;
+        this.isCollectionLiked();
+        for (let i = 0; i < collection.sneakers.length; i++){
+          this.sneakerService.getSneaker(collection.sneakers[i]).subscribe(
+            (sneaker: SneakerInterface) => {
+              this.sneakers.push(sneaker);
+            }
+          );
+        }
         });
+    });
+
+    this.authService.currentUser.subscribe(value => {
+      this.userLog = value;
+      this.isCollectionLiked();
     });
   }
 
-  toggleLikeInCollection() {
+  private isCollectionLiked(){
+    if (this.userLog != null){
+      this.like = this.collection.likes.includes(this.userLog.uid);
+    }
+  }
 
+  toggleLikeInCollection() {
+    if(this.like){
+      this.collection.likes = this.collection.likes.filter( value => value != this.userLog.uid );
+    } else {
+      this.collection.likes.push(this.userLog.uid);
+    }
+    this.like = !this.like;
+    this.collectionServive.updateLikes(this.collection.id, this.collection.likes);
   }
 }

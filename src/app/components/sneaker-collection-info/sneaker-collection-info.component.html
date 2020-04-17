@@ -7,8 +7,10 @@
     </app-sneaker-box>
   </div>
 
-  <div class="row justify-content-center align-items-center">
-    <button (click)="toggleLikeInCollection()" class="col-6 py-1"><i class="fas fa-heart font-size-16" [class.selected]="true"></i> Me gusta</button>
+  <div class="row justify-content-center align-items-center mt-3" *ngIf="userLog">
+    <button (click)="toggleLikeInCollection()" class="col-6 py-1 button">
+      Me gusta <i class="fas fa-heart font-size-16" [class.selected]="like"></i>
+    </button>
   </div>
 </div>
 

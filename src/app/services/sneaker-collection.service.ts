@@ -84,4 +84,8 @@ export class SneakerCollectionService {
         })
       )
   }
+
+  updateLikes(collection_id: string, likes: string[] ){
+    return fromPromise(this.sneakerCollectionCollection.doc(collection_id).update({likes: likes}));
+  }
 }
